@@ -1,6 +1,8 @@
 /**
  * Common database helper functions.
  */
+const appAlias = "/mws-restaurant-stage-1";
+
 class DBHelper {
 
   /**
@@ -9,7 +11,6 @@ class DBHelper {
    */
   static get DATABASE_URL() {
     const port = 80; // Change this to your server port
-    const appAlias = "/mws-restaurant-stage-1";
     return `http://localhost:${port}${appAlias}/data/restaurants.json`;
   }
 
@@ -151,7 +152,7 @@ class DBHelper {
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-    return (`/img/${restaurant.photograph}`);
+    return (`${appAlias}/img/${restaurant.photograph}`);
   }
 
   /**
