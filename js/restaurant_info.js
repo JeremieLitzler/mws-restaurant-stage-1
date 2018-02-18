@@ -143,9 +143,18 @@ fillBreadcrumb = (restaurant=self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
   const li = document.createElement('li');
   li.innerHTML = restaurant.name;
+  breadcrumb.appendChild(addHomeLink());
   breadcrumb.appendChild(li);
 }
 
+/**
+*
+*/
+function addHomeLink() {
+  const homeLi = document.createElement("li");
+  homeLi.innerHTML = `<li><a href="${appAlias}">Home</a></li>`;
+  return homeLi;
+}
 /**
  * Get a parameter by name from page URL.
  */
