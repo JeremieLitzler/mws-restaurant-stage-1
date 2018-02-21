@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
     <link rel="stylesheet" href="css/styles.css">
     <title>Restaurant Reviews</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         <section id="map-container">
             <div id="map"></div>
         </section>
-        <section>
+        <section class="restaurant-container">
             <div class="filter-options">
                 <h2>Filter Results</h2>
                 <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
@@ -37,7 +37,7 @@
     <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwOeJnDCUBxX9xneibbLydTlYkJsB5S9s&libraries=places&callback=initMap"></script>
     <footer id="footer">
-        Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+        Copyright (c) 2018 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
     </footer>
 </body>
 
