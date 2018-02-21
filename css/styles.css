@@ -8,6 +8,8 @@
   --text-light: #fff;
   --brand-color: orange;
 
+  --link-color-hover: var(--text-dark);
+  --link-color: #3397db;
   --link-color: #3397db;
   --link-color-darker: #01447e;
 
@@ -115,6 +117,9 @@ section {
   margin-bottom: var(--btn-default-margin);
   margin-top: var(--btn-default-margin);
   display: inline-block;
+}
+.btn-default:hover {
+  color: var(--link-color-hover);
 }
 /* ====================== Header ====================== */
 
