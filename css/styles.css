@@ -206,8 +206,33 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Listing ====================== */
+/*#restaurant-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.restaurant-container {
+  display: flex;
+}
+
+.restaurant-img-container {
+  width: 96px;
+}
 
 .restaurant-img {
   max-width: 100%;
 }
+
+.restaurant-container a,
+.restaurant-container p {
+  display: none
+}
+
+@media and screen(min-width: 400px) {
+  .restaurant-container a, 
+  .restaurant-container p {
+    display: inline-flex;
+  }
+}
+*/
 /* ====================== Restaurant Details ====================== */
