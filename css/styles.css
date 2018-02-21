@@ -100,7 +100,6 @@ section {
   text-transform: uppercase;
 }
 
-<<<<<<< HEAD
 .debug {
   border: 1px solid red;
 }
@@ -151,7 +150,6 @@ nav h1 a {
 #breadcrumb {
   padding: 10px 40px 16px;
   list-style: none;
-<<<<<<< HEAD
   background-color: var(--bg-container-light);
   font-size: 17px;
   margin: 0;
@@ -195,7 +193,6 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Filtering ====================== */
-<<<<<<< HEAD
 .filter-options {
   text-align: center;
 }
@@ -208,3 +205,4 @@ nav h1 a {
 .restaurant-img {
   max-width: 100%;
 }
+/* ====================== Restaurant Details ====================== */
