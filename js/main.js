@@ -95,16 +95,21 @@ updateRestaurants = () => {
 
   const cuisine = cSelect[cIndex].value;
   const neighborhood = nSelect[nIndex].value;
-
-  DBHelper.fetchRestaurantByCuisineAndNeighborhood(cuisine, neighborhood, (error, restaurants) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {
-      resetRestaurants(restaurants);
-      fillRestaurantsHTML();
+  document.getElementById("filters-modal").style.display = "none";
+  DBHelper.fetchRestaurantByCuisineAndNeighborhood(
+    cuisine,
+    neighborhood,
+    (error, restaurants) => {
+      if (error) {
+        // Got an error!
+        console.error(error);
+      } else {
+        resetRestaurants(restaurants);
+        fillRestaurantsHTML();
+      }
     }
-  })
-}
+  );
+};
 
 /**
  * Clear current restaurants, their HTML and remove their map markers.
