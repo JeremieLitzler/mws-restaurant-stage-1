@@ -1,21 +1,46 @@
 @charset "utf-8";
 /* CSS Document */
 :root {
-  --bg-dark: #252831;
-  --bg-light: #fdfdfd;
-  --bg-container-light: #f3f3f3;
-  --text-dark: #333;
-  --text-light: #fff;
   --brand-color: orange;
-
-  --link-color-hover: var(--text-dark);
+  /* default dark background color */
+  --bg-dark: #252831;
+  /* default light background color */
+  --bg-light: #eee;
+  /* default dark text color */
+  --text-dark: #333;
+  /* default light text color */
+  --text-light: #fff;
+  /* default link text color */
   --link-color: #3397db;
-  --link-color: #3397db;
+  /* default darker link text color */
   --link-color-darker: #01447e;
+  /* default link text color on hover */
+  --link-color-hover: var(--text-dark);
 
-  --btn-min-width: 144px;
-  --btn-min-height: 48px;
-  --btn-default-margin: 8px;
+  /* default top and bottom margin */
+  --default-y-mg: 8px;
+  /* default left and righ margin */
+  --default-x-mg: 8px;
+  /* default padding all around */
+  --default-pad: 8px;
+
+  /* COMPONENTS VAR */
+
+  /* default light background color for a component */
+  --c-bg-light: #f3f3f3;
+  /* default light background color for a row component */
+  --c-bg-row-default: #fff;
+  /* default border color for a row component */
+  --c-bd-color-row-default: #949494;
+
+  /* default button width */
+  --c-btn-default-width: 144px;
+  /* default button width */
+  --c-btn-small-width: calc(var(--c-btn-default-width) / 3);
+  /* default button height */
+  --c-btn-min-height: 48px;
+  /* default row height */
+  --c-row-min-height: 64px;
 }
 body,
 td,
@@ -68,7 +93,9 @@ h4,
 h5,
 h6 {
   font-family: Arial, Helvetica, sans-serif;
-  margin: 0 0 20px;
+  /*  RESET USER AGENT STYLES on hX elements */
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
 }
 
 article,
@@ -88,7 +115,7 @@ section {
 }
 
 #maincontent {
-  background-color: var(--bg-container-light);
+  background-color: var(--bg-light);
   min-height: 100%;
 }
 
@@ -111,15 +138,32 @@ section {
   background-color: var(--brand-color);
   color: var(--text-light);
   border: 0;
-  min-width: var(--btn-min-width);
+  min-width: var(--c-btn-default-width);
   width: 144px;
-  line-height: var(--btn-min-height);
-  margin-bottom: var(--btn-default-margin);
-  margin-top: var(--btn-default-margin);
+  line-height: var(--c-btn-min-height);
+  margin: var(--default-y-mg) var(--default-x-mg);
   display: inline-block;
+  border-radius: 0.25em;
 }
 .btn-default:hover {
-  color: var(--link-color-hover);
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  border: 1px solid var(--brand-color);
+}
+.btn-small {
+  min-width: var(--c-btn-small-width);
+  width: 48px;
+  text-align: center;
+}
+.row-default {
+  height: var(--c-row-min-height);
+  background-color: var(--c-bg-row-default);
+  padding: var(--default-pad) 0 var(--default-pad) var(--default-pad);
+  border-bottom: 1px solid var(--c-bd-color-row-default);
+}
+
+.row-default:first-child {
+  border-top: 1px solid var(--c-bd-color-row-default);
 }
 /* ====================== Header ====================== */
 
@@ -155,7 +199,7 @@ nav h1 a {
 #breadcrumb {
   padding: 10px 40px 16px;
   list-style: none;
-  background-color: var(--bg-container-light);
+  background-color: var(--c-bg-light);
   font-size: 17px;
   margin: 0;
   width: calc(50% - 80px);
@@ -194,19 +238,34 @@ nav h1 a {
 #map {
   height: 40vh;
   width: 100%;
-  background-color: var(--bg-container-light);
+  background-color: var(--c-bg-light);
 }
 
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
   text-align: center;
+  clear: both;
 }
-.filter-options a {
-  margin: var(--btn-default-margin) auto;
+
+#filters-modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vh;
+  height: 100vh;
+  background-color: var(--bg-light);
+  text-align: center;
+}
+
+#filters-modal select {
+  display: block;
+  margin: var(--default-y-mg) auto;
+  padding: calc(var(--default-pad) * 2);
 }
 
 /* ====================== Restaurant Listing ====================== */
-/*#restaurant-list {
+#restaurant-list {
   display: flex;
   flex-wrap: wrap;
 }
@@ -215,24 +274,37 @@ nav h1 a {
   display: flex;
 }
 
-.restaurant-img-container {
-  width: 96px;
-}
-
 .restaurant-img {
-  max-width: 100%;
+  max-height: var(--c-row-min-height);
 }
 
-.restaurant-container a,
+.restaurant-container h1 {
+  padding: 0 1em;
+  line-height: 1em;
+  width: 100%;
+}
 .restaurant-container p {
-  display: none
+  display: none;
 }
+@media screen and (min-width: 400px) {
+  .restaurant-img-container {
+    width: 200px;
+  }
 
-@media and screen(min-width: 400px) {
-  .restaurant-container a, 
-  .restaurant-container p {
-    display: inline-flex;
+  .restaurant-container h1 {
+    font-size: larger;
+  }
+  .restaurant-container p.neighborhood {
+    display: inline;
   }
 }
-*/
+
+@media screen and (min-width: 600px) {
+  .restaurant-container p.address {
+    display: inline;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+}
 /* ====================== Restaurant Details ====================== */
