@@ -149,28 +149,36 @@ createRestaurantHTML = restaurant => {
   const image = document.createElement("img");
   image.className = "restaurant-img";
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  imageContainer.append(image);
+  imageContainer.appendChild(image);
   li.append(imageContainer);
+
+  const descriptionItems = document.createElement("div");
+  descriptionItems.className = "descriptions";
 
   const name = document.createElement("h1");
   name.innerHTML = restaurant.name;
-  li.append(name);
+  descriptionItems.append(name);
 
   const neighborhood = document.createElement("p");
   neighborhood.className = "neighborhood";
   neighborhood.innerHTML = restaurant.neighborhood;
-  li.append(neighborhood);
+  descriptionItems.append(neighborhood);
 
   const address = document.createElement("p");
   address.className = "address";
   address.innerHTML = restaurant.address;
-  li.append(address);
+  descriptionItems.append(address);
 
+  li.append(descriptionItems);
+
+  const moreContainer = document.createElement("span");
+  moreContainer.className = "more-container";
   const more = document.createElement("a");
-  more.className = "btn-default btn-small";
+  more.className = "btn-more btn-default btn-small";
   more.innerHTML = "More";
   more.href = DBHelper.urlForRestaurant(restaurant);
-  li.append(more);
+  moreContainer.appendChild(more);
+  li.append(moreContainer);
 
   return li;
 };

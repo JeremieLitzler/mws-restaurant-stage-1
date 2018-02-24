@@ -299,12 +299,24 @@ nav h1 a {
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 800px) {
+  
+  #restaurants-list {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: 0fr 0fr;
+    grid-auto-rows: 80px;
+  }
+  .restaurant-container {
+  }
   .restaurant-container p.address {
     display: inline;
   }
 }
 
 @media screen and (min-width: 1024px) {
+  #restaurants-list {
+    margin: 0 20em;
+  }
 }
 /* ====================== Restaurant Details ====================== */
