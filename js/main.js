@@ -131,6 +131,10 @@ resetRestaurants = restaurants => {
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById("restaurants-list");
+
+  if (restaurants.length === 0) {
+    alert("No restaurants found for selected filter(s).");
+  }
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
   });
