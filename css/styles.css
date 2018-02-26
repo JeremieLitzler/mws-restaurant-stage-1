@@ -2,6 +2,7 @@
 /* CSS Document */
 :root {
   --brand-color: orange;
+  --text-brand-color: #2b2b2b;
   /* default dark background color */
   --bg-dark: #252831;
   /* default light background color */
@@ -144,7 +145,7 @@ section {
 /* ====================== Components ====================== */
 .btn-default {
   background-color: var(--brand-color);
-  color: var(--text-light);
+  color: var(--text-brand-color);
   border: 0;
   min-width: var(--c-btn-default-width);
   width: 144px;
