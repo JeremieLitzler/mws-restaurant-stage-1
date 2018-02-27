@@ -13,10 +13,19 @@
   --text-light: #fff;
   /* default link text color */
   --link-color: #3397db;
+  /* default link text color over dark background */
+  --link-color-on-dark: #81c0ea;
   /* default darker link text color */
   --link-color-darker: #01447e;
   /* default link text color on hover */
   --link-color-hover: var(--text-dark);
+  /* default link text color on hover when background is dark */
+  --link-color-hover-on-dark: var(--brand-color);
+
+  /* default font size */
+  --fs-default: 1em;
+  /* default line height */
+  --lh-default: 1em;
 
   /* default top and bottom margin */
   --default-y-mg: 8px;
@@ -52,9 +61,9 @@ td,
 th,
 p {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10pt;
+  font-size: var(--fs-default);
   color: var(--text-dark);
-  line-height: 1em;
+  line-height: var(--lh-default);
 }
 p {
   /* decrese default margin from webkit */
@@ -70,7 +79,6 @@ body {
 ul,
 li {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10pt;
   color: var(--text-dark);
   list-style: none;
   -webkit-margin-before: 0;
@@ -102,6 +110,7 @@ h4,
 h5,
 h6 {
   font-family: Arial, Helvetica, sans-serif;
+  line-height: calc(var(--lh-default) * 1.5);
   /*  RESET USER AGENT STYLES on hX elements */
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
@@ -130,7 +139,6 @@ section {
 #footer {
   background-color: var(--bg-dark);
   color: var(--text-light);
-  font-size: 8pt;
   letter-spacing: 1px;
   padding: 25px;
   text-align: center;
@@ -185,9 +193,7 @@ header h1 {
   text-align: center;
   margin: 0;
 }
-header h1 a {
-  font-size: 1em;
-}
+
 /* ====================== Navigation ====================== */
 
 nav {
@@ -200,47 +206,9 @@ nav h1 {
 
 nav h1 a {
   color: var(--text-light);
-  font-size: 14pt;
   font-weight: 200;
   letter-spacing: 10px;
   text-transform: uppercase;
-}
-
-#breadcrumb {
-  padding: 10px 40px 16px;
-  list-style: none;
-  background-color: var(--c-bg-light);
-  font-size: 17px;
-  margin: 0;
-  width: calc(50% - 80px);
-}
-
-/* Display list items side by side */
-
-#breadcrumb li {
-  display: inline;
-}
-
-/* Add a slash symbol (/) before/behind each list item */
-
-#breadcrumb li + li:before {
-  padding: 8px;
-  color: var(--text-dark);
-  content: "/\00a0";
-}
-
-/* Add a color to all links inside the list */
-
-#breadcrumb li a {
-  color: var(--link-color);
-  text-decoration: none;
-}
-
-/* Add a color on mouse-over */
-
-#breadcrumb li a:hover {
-  color: var(--link-color-darker);
-  text-decoration: underline;
 }
 
 /* ====================== Map ====================== */
@@ -325,7 +293,7 @@ nav h1 a {
 }
 @media screen and (max-width: 399px) {
   .restaurant-container h1 {
-    font-size: 1em;
+    font-size: var(--fs-default);
   }
 }
 @media screen and (min-width: 400px) {
@@ -390,4 +358,56 @@ nav h1 a {
     margin: 0 auto;
   }
 }
-/* ====================== Footer ====================== */
+
+/* ====================== Breadcrumb ====================== */
+.breadcrumb {
+  padding: 10px 40px 16px;
+  list-style: none;
+  background-color: var(--bg-dark);
+  font-size: var(--fs-default);
+  margin: 0;
+}
+
+/* Display list items side by side */
+
+.breadcrumb li {
+  display: inline;
+  color: var(--text-light);
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+
+.breadcrumb li + li:before {
+  padding: 8px;
+  color: var(--text-light);
+  content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+
+.breadcrumb li a {
+  color: var(--link-color-on-dark);
+  text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+
+.breadcrumb li a:hover {
+  color: var(--link-color-hover-on-dark);
+  text-decoration: underline;
+}
+
+/* ====================== Restaurant Details ====================== */
+.resto-page__container {
+  height: 100%;
+}
+.resto-page__container #map {
+  height: 20vh;
+}
+.resto-page__container h1 {
+  text-align: center;
+}
+
+.resto-page__container .restaurant-img {
+  height: inherit;
+}
