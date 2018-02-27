@@ -8,7 +8,6 @@
     <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
     <!-- Main CSS file -->
     <link rel="stylesheet" href="css/styles.css" type="text/css">
-    <link rel="stylesheet" href="css/restaurant.details.css" type="text/css">
     <title>Restaurant Info</title>
 </head>
 
@@ -22,10 +21,10 @@
         </nav>
     </header>
 
-    <ul id="breadcrumb">
+    <ul id="breadcrumb" class="breadcrumb">
     </ul>
 
-    <main id="maincontent">
+    <main id="maincontent" class="resto-page__container">
         <!-- Beginning map -->
         <section id="map-container">
             <div id="map"></div>
@@ -34,7 +33,9 @@
         <!-- Beginning restaurant -->
         <section id="restaurant-container">
             <h1 id="restaurant-name"></h1>
-            <img id="restaurant-img">
+            <div class="restaurant-img-container">
+                <img id="restaurant-img">
+            </div>
             <p id="restaurant-cuisine"></p>
             <p id="restaurant-address"></p>
             <table id="restaurant-hours"></table>
