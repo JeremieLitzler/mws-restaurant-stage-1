@@ -24,7 +24,7 @@
     <ul id="breadcrumb" class="breadcrumb">
     </ul>
 
-    <main id="maincontent" class="resto-page__container">
+    <main id="maincontent" class="resto-page-container">
         <!-- Beginning map -->
         <section id="map-container">
             <div id="map" aria-hidden="true"></div>
@@ -36,14 +36,36 @@
             <div class="restaurant-img-container">
                 <img id="restaurant-img">
             </div>
-            <p id="restaurant-cuisine"></p>
-            <p id="restaurant-address"></p>
-            <table id="restaurant-hours"></table>
+            <div class="c-btn btn-default">
+                <button class="btn-resto-hours" value="View opening hours" onclick="document.getElementById('restaurant-hours').style.display='block'">
+                    View opening hours
+                </button>
+            </div>
+            <div class="c-btn btn-default">
+                <button value="Read reviews" onclick="document.getElementById('reviews-container').style.display='block'">
+                    Read reviews
+                </button>
+            </div>
+        </section>
+        <section id="restaurant-hours" class="c-modal restaurant-hours-container-modal">
+            <div class="restaurant-hours__table">
+                <table id="restaurant-hours"></table>
+            </div>
+            <div class="c-btn btn-default btn-stretch">
+                <button value="Close" onclick="document.getElementById('restaurant-hours').style.display='none'">
+                    Close
+                </button>
+            </div>
         </section>
         <!-- end restaurant -->
         <!-- Beginning reviews -->
-        <section id="reviews-container">
+        <section id="reviews-container" class="c-modal reviews-container-modal">
             <ul id="reviews-list"></ul>
+            <div class="c-btn btn-default btn-stretch">
+                <button value="Close" onclick="document.getElementById( 'reviews-container').style.display='none'">
+                    Close
+                </button>
+            </div>
         </section>
         <!-- End reviews -->
     </main>
