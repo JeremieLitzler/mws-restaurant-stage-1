@@ -208,6 +208,16 @@ button {
 .row-default:first-child {
   border-top: 1px solid var(--c-bd-color-row-default);
 }
+.c-modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-light);
+  text-align: center;
+}
 /* ====================== Header ====================== */
 
 header {
@@ -248,17 +258,6 @@ nav h1 a {
 .filter-options {
   text-align: center;
   clear: both;
-}
-
-#filters-modal {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--bg-light);
-  text-align: center;
 }
 
 #filters-modal select {
