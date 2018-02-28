@@ -422,16 +422,68 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Details ====================== */
-.resto-page__container {
-  height: 100%;
-}
-.resto-page__container #map {
+.resto-page-container #map {
   height: 20vh;
 }
-.resto-page__container h1 {
+.resto-page-container h1,
+.resto-page-container p {
   text-align: center;
 }
 
-.resto-page__container .restaurant-img {
-  height: inherit;
+.resto-page-container .restaurant-img-container {
+  width: 100%;
+}
+
+.resto-page-container .restaurant-img {
+  max-width: 100%;
+  max-height: initial;
+}
+
+.reviews-container-modal,
+.restaurant-hours-container-modal {
+  display: none;
+}
+.restaurant-hours-container-modal .c-btn {
+  margin-top: calc(var(--default-y-mg) * 4);
+}
+
+@media screen and (max-width: 399px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  td {
+    position: relative;
+    text-align: center;
+  }
+}
+
+.restaurant-hours-container-modal td:nth-child(odd) {
+  font-weight: bold;
+  margin-top: calc(var(--default-y-mg) *2);
+  margin-bottom: var(--default-y-mg);
+}
+
+.reviews-container-modal {
+  line-height: initial;
+  overflow-y: scroll;
+  height: initial;
+}
+
+.reviews-container-modal .btn-stretch {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: var(--bg-light);
+  border-top: 1px solid var(--c-bd-color-row-default);
+  width: 100%;
 }
