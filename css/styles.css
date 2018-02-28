@@ -49,6 +49,10 @@
   --c-btn-small-width: calc(var(--c-btn-default-width) / 3);
   /* default button height */
   --c-btn-min-height: 48px;
+  /* default font size for a button component */
+  --c-btn-fs-default: 1.2em;
+  /* default line height for a button component */
+  --c-btn-lh-default: 48px;
   /* default row height */
   --c-row-min-height: 64px;
 }
@@ -132,6 +136,12 @@ section {
   max-width: 100%;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
 #maincontent {
   background-color: var(--bg-light);
 }
@@ -150,22 +160,37 @@ section {
 }
 
 /* ====================== Components ====================== */
-.btn-default {
+.c-btn {
   background-color: var(--brand-color);
   color: var(--text-brand-color);
   border: 0;
   width: 144px;
   min-width: var(--c-btn-default-width);
   max-width: 80%;
-  line-height: var(--c-btn-min-height);
+  min-height: var(--c-btn-min-height);
   margin: var(--default-y-mg) calc(var(--default-x-mg) *2);
   display: inline-block;
   border-radius: 0.25em;
+  line-height: var(--c-btn-lh-default);
+}
+.btn-default button,
+.btn-default a {
+  width: 100%;
+  font-size: var(--c-btn-fs-default);
+  color: var(--text-dark);
 }
 .btn-default:hover {
   background-color: var(--bg-dark);
   color: var(--text-light);
   border: 1px solid var(--brand-color);
+}
+.btn-default a:hover,
+.btn-default button:active,
+.btn-default button:hover {
+  color: var(--link-color-hover-on-dark);
+}
+.btn-default a:hover {
+  text-decoration: underline;
 }
 .btn-small {
   width: 48px;
