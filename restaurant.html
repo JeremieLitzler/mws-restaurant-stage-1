@@ -31,7 +31,7 @@
         </section>
         <!-- End map -->
         <!-- Beginning restaurant -->
-        <section id="restaurant-container">
+        <section id="restaurant-container" class="restaurant-details-container">
             <h1 id="restaurant-name"></h1>
             <p id="restaurant-cuisine"></p>
             <p id="restaurant-address"></p>
@@ -50,23 +50,26 @@
             </div>
         </section>
         <section id="restaurant-hours" class="c-modal restaurant-hours-container-modal">
-            <div class="restaurant-hours__table">
-                <table id="restaurant-hours"></table>
-            </div>
-            <div class="c-btn btn-default btn-stretch">
-                <button value="Close" onclick="document.getElementById('restaurant-hours').style.display='none'">
-                    Close
-                </button>
+            <h2>Opening hours</h2>
+            <table id="restaurant-hours"></table>
+            <div class="btn-close-modal">
+                <div class="c-btn btn-default">
+                    <button value="Close" onclick="document.getElementById('restaurant-hours').style.display='none'">
+                        Close
+                    </button>
+                </div>
             </div>
         </section>
         <!-- end restaurant -->
         <!-- Beginning reviews -->
         <section id="reviews-container" class="c-modal reviews-container-modal">
             <ul id="reviews-list"></ul>
-            <div class="c-btn btn-default btn-stretch">
-                <button value="Close" onclick="document.getElementById( 'reviews-container').style.display='none'">
-                    Close
-                </button>
+            <div class="btn-close-modal">
+                <div class="c-btn btn-default">
+                    <button value="Close" onclick="document.getElementById( 'reviews-container').style.display='none'">
+                        Close
+                    </button>
+                </div>
             </div>
         </section>
         <!-- End reviews -->
