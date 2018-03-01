@@ -218,6 +218,15 @@ button {
   background-color: var(--bg-light);
   text-align: center;
 }
+.btn-close-modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: var(--bg-dark);
+  border-top: 1px solid var(--c-bd-color-row-default);
+  width: 100%;
+}
+
 /* ====================== Header ====================== */
 
 header {
@@ -432,8 +441,20 @@ nav h1 a {
 
 .resto-page-container .restaurant-img-container {
   width: 100%;
+  height: initial;
 }
 
+@media screen and (min-width: 400px) {
+  .resto-page-container .restaurant-img-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 800px) {
+  .resto-page-container .restaurant-img-container {
+    width: 50%;
+  }
+}
 .resto-page-container .restaurant-img {
   max-width: 100%;
   max-height: initial;
@@ -443,11 +464,20 @@ nav h1 a {
 .restaurant-hours-container-modal {
   display: none;
 }
-.restaurant-hours-container-modal .c-btn {
-  margin-top: calc(var(--default-y-mg) * 4);
+
+@media screen and (min-width: 600px) {
+  .reviews-container-modal,
+  .restaurant-hours-container-modal {
+    display: block;
+    position: initial;
+  }
+  .restaurant-details-container .c-btn,
+  .c-modal .c-btn {
+    display: none;
+  }
 }
 
-@media screen and (max-width: 399px) {
+@media screen and (max-width: 500px) {
   table,
   thead,
   tbody,
@@ -466,11 +496,15 @@ nav h1 a {
     text-align: center;
   }
 }
+@media screen and (min-width: 501px) {
+  .restaurant-hours-container-modal > tr {
+    display: table;
+    margin: var(--default-y-mg) auto;
+  }
+}
 
 .restaurant-hours-container-modal td:nth-child(odd) {
   font-weight: bold;
-  margin-top: calc(var(--default-y-mg) *2);
-  margin-bottom: var(--default-y-mg);
 }
 
 .reviews-container-modal {
@@ -478,12 +512,40 @@ nav h1 a {
   overflow-y: scroll;
   height: initial;
 }
+.reviews-container-modal ul {
+  padding-bottom: calc(var(--c-btn-min-height) * 1.5);
+}
+.reviews-container-modal {
+  font-size: calc(var(--fs-default)*1.2);
+}
 
-.reviews-container-modal .btn-stretch {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: var(--bg-light);
-  border-top: 1px solid var(--c-bd-color-row-default);
+.reviews-container-modal li {
+  margin: calc(var(--default-y-mg)*2) calc(var(--default-x-mg)*2) 0
+    calc(var(--default-x-mg)*3);
+  background-color: var(--c-bg-row-default);
+  border: 1px solid var(--c-bd-color-row-default);
+  padding: calc(var(--default-pad)*2);
+  border-radius: 4px;
+}
+.reviews-container-modal .review-date {
   width: 100%;
+  text-align: right;
+  font-style: italic;
+}
+.reviews-container-modal .review-author,
+.reviews-container-modal .review-rating {
+  display: inline-block;
+  width: 50%;
+  font-weight: bold;
+}
+.reviews-container-modal .review-comments {
+  width: 100%;
+  padding: var(--default-pad) 0;
+  text-align: justify;
+  font-size: smaller;
+}
+@media screen and (min-width: 400px) {
+  .reviews-container-modal .review-comments {
+    font-size: inherit;
+  }
 }
