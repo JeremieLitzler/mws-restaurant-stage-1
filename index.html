@@ -31,7 +31,13 @@
             <ul id="restaurants-list"></ul>
         </section>
     </main>
-    <section id="filters-modal" class="c-modal">
+    <footer id="footer">
+        Copyright (c) 2018
+        <a href="/">
+            <strong>Restaurant Reviews</strong>
+        </a> All Rights Reserved.
+    </footer>
+    <div id="filters-modal" class="c-modal">
         <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
             <option value="all">All Neighborhoods</option>
         </select>
@@ -41,17 +47,11 @@
         <div class="c-btn btn-default">
             <button href="#" title="Close Search" onclick="document.getElementById('filters-modal').style.display='none'">Close Search</button>
         </div>
-    </section>
+    </div>
     <script type="application/javascript" charset="utf-8" src="js/app.js"></script>
     <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
     <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXysE433qRY0W9gup0-_N5UF_0ObJK3oc&libraries=places&callback=initMap"></script>
-    <footer id="footer">
-        Copyright (c) 2018
-        <a href="/">
-            <strong>Restaurant Reviews</strong>
-        </a> All Rights Reserved.
-    </footer>
 </body>
 
 </html>
