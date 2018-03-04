@@ -80,19 +80,19 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 fillRestaurantHoursHTML = (
   operatingHours = self.restaurant.operating_hours
 ) => {
-  const hours = document.getElementById("restaurant-hours");
+  const hours = document.getElementById("restaurant-hours-table");
   for (let key in operatingHours) {
     const row = document.createElement("tr");
 
     const day = document.createElement("td");
-    day.innerHTML = key;
+    day.innerHTML = `${key}: `;
     row.appendChild(day);
 
     const time = document.createElement("td");
     time.innerHTML = operatingHours[key];
     row.appendChild(time);
 
-    hours.append(row);
+    hours.appendChild(row);
   }
 };
 
