@@ -479,20 +479,16 @@ nav h1 a {
 
   .resto-page-container .map-container {
     grid-row: 1 / -1;
-    grid-column: 1 / 7;
+    grid-column: 1 / 8;
   }
   .map-container ~ section {
-    grid-column: 7 / -1;
+    grid-column: 8 / -1;
   }
   .map-container > #map {
     height: 100%;
   }
 }
-@media screen and (min-width: 800px) {
-  .resto-page-container .restaurant-img-container {
-    width: 50%;
-  }
-}
+
 .resto-page-container .restaurant-img {
   max-width: 100%;
   max-height: initial;
