@@ -67,7 +67,6 @@ p {
   font-family: Arial, Helvetica, sans-serif;
   font-size: var(--fs-default);
   color: var(--text-dark);
-  line-height: var(--lh-default);
 }
 p {
   /* decrese default margin from webkit */
@@ -168,7 +167,7 @@ button {
   min-width: var(--c-btn-default-width);
   max-width: 80%;
   min-height: var(--c-btn-min-height);
-  margin: var(--default-y-mg) calc(var(--default-x-mg) *2);
+  margin: var(--default-y-mg) calc(var(--default-x-mg) * 2);
   display: inline-block;
   border-radius: 0.25em;
   line-height: var(--c-btn-lh-default);
@@ -330,7 +329,10 @@ nav h1 a {
   }
 }
 @media screen and (min-width: 400px) {
-  .row-default,
+  .row-default {
+    min-height: calc(var(--c-row-min-height) * 1.2);
+  }
+
   .restaurant-img-container {
     height: calc(var(--c-row-min-height) * 1.5);
   }
@@ -358,12 +360,15 @@ nav h1 a {
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 650px) {
   #restaurants-list {
     grid-template-columns: auto auto;
     grid-gap: 0.1rem 1rem;
   }
 
+  .row-default {
+    min-height: calc(var(--c-row-min-height) * 1.5);
+  }
   .restaurant-container:nth-child(odd) {
     margin-left: calc(var(--default-x-mg) * 2);
     /* margin-right: var(--default-x-mg); */
@@ -389,6 +394,9 @@ nav h1 a {
   .restaurants-container {
     width: 1024px;
     margin: 0 auto;
+  }
+  .address {
+    display: block;
   }
 }
 
@@ -465,8 +473,8 @@ nav h1 a {
   display: none;
 }
 
-@media screen and (min-width: 600px) {
-  .reviews-container-modal,
+@media screen and (min-width: 650px) {
+  /* .reviews-container-modal,
   .restaurant-hours-container-modal {
     display: block;
     position: initial;
@@ -474,7 +482,7 @@ nav h1 a {
   .restaurant-details-container .c-btn,
   .c-modal .c-btn {
     display: none;
-  }
+  } */
 }
 
 @media screen and (max-width: 500px) {
@@ -495,10 +503,7 @@ nav h1 a {
     position: relative;
     text-align: center;
   }
-}
-@media screen and (min-width: 501px) {
-  .restaurant-hours-container-modal > tr {
-    display: table;
+  table > tr {
     margin: var(--default-y-mg) auto;
   }
 }
