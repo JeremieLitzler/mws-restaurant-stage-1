@@ -341,8 +341,11 @@ nav h1 a {
   }
   .restaurant-img-container {
     flex: 2;
+    align-self: baseline;
+    height: min-content;
   }
   .restaurant-img {
+    height: 100%;
     max-height: 100%;
   }
   .descriptions {
@@ -352,6 +355,7 @@ nav h1 a {
   .restaurant-container h1 {
     font-size: larger;
   }
+
   .more-container {
     flex: 1;
   }
@@ -383,13 +387,11 @@ nav h1 a {
     border-radius: 4px;
     margin-bottom: 16px;
   }
-}
-
-@media screen and (min-width: 800px) {
-  .address {
-    display: block;
+  .restaurant-container h1 {
+    font-size: initial;
   }
 }
+
 @media screen and (min-width: 1024px) {
   .restaurants-container {
     width: 1024px;
@@ -447,6 +449,10 @@ nav h1 a {
   text-align: center;
 }
 
+.restaurant-details-container,
+.restaurant-hours-container-modal {
+  text-align: center;
+}
 .resto-page-container .restaurant-img-container {
   width: 100%;
   height: initial;
@@ -456,6 +462,30 @@ nav h1 a {
   .resto-page-container .restaurant-img-container {
     width: 80%;
     margin: 0 auto;
+  }
+  .resto-page-container .restaurant-img {
+    height: initial;
+  }
+  .restaurant-hours-container-modal table {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 650px) {
+  .resto-page-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto auto auto;
+  }
+
+  .resto-page-container .map-container {
+    grid-row: 1 / -1;
+    grid-column: 1 / 7;
+  }
+  .map-container ~ section {
+    grid-column: 7 / -1;
+  }
+  .map-container > #map {
+    height: 100%;
   }
 }
 @media screen and (min-width: 800px) {
@@ -517,19 +547,26 @@ nav h1 a {
   overflow-y: scroll;
   height: initial;
 }
+
+@media screen and (min-width: 650px) {
+  .reviews-container-modal ul {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+}
 .reviews-container-modal ul {
   padding-bottom: calc(var(--c-btn-min-height) * 1.5);
 }
 .reviews-container-modal {
-  font-size: calc(var(--fs-default)*1.2);
+  font-size: calc(var(--fs-default) * 1.2);
 }
 
 .reviews-container-modal li {
-  margin: calc(var(--default-y-mg)*2) calc(var(--default-x-mg)*2) 0
-    calc(var(--default-x-mg)*3);
+  margin: calc(var(--default-y-mg) * 2) calc(var(--default-x-mg) * 2) 0
+    calc(var(--default-x-mg) * 3);
   background-color: var(--c-bg-row-default);
   border: 1px solid var(--c-bd-color-row-default);
-  padding: calc(var(--default-pad)*2);
+  padding: calc(var(--default-pad) * 2);
   border-radius: 4px;
 }
 .reviews-container-modal .review-date {
