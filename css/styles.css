@@ -32,7 +32,7 @@
   /* default left and righ margin */
   --default-x-mg: 8px;
   /* default padding all around */
-  --default-pad: 8px;
+  --default-pad: 16px;
 
   /* COMPONENTS VAR */
 
@@ -166,29 +166,17 @@ button {
   width: 144px;
   min-width: var(--c-btn-default-width);
   max-width: 80%;
-  min-height: var(--c-btn-min-height);
   margin: var(--default-y-mg) calc(var(--default-x-mg) * 2);
   display: inline-block;
   border-radius: 0.25em;
-  line-height: var(--c-btn-lh-default);
-}
-.btn-default button,
-.btn-default a {
-  width: 100%;
-  font-size: var(--c-btn-fs-default);
-  color: var(--text-dark);
+  font-size: var(--fs-default);
+  padding: var(--default-pad);
+  cursor: pointer;
 }
 .btn-default:hover {
   background-color: var(--bg-dark);
   color: var(--text-light);
   border: 1px solid var(--brand-color);
-}
-.btn-default a:hover,
-.btn-default button:active,
-.btn-default button:hover {
-  color: var(--link-color-hover-on-dark);
-}
-.btn-default a:hover {
   text-decoration: underline;
 }
 .btn-small {
@@ -499,18 +487,6 @@ nav h1 a {
   display: none;
 }
 
-@media screen and (min-width: 650px) {
-  /* .reviews-container-modal,
-  .restaurant-hours-container-modal {
-    display: block;
-    position: initial;
-  }
-  .restaurant-details-container .c-btn,
-  .c-modal .c-btn {
-    display: none;
-  } */
-}
-
 @media screen and (max-width: 500px) {
   table,
   thead,
@@ -545,9 +521,18 @@ nav h1 a {
 }
 
 @media screen and (min-width: 650px) {
+  .reviews-container-modal,
+  .restaurant-hours-container-modal {
+    height: inherit;
+  }
   .reviews-container-modal ul {
     display: grid;
     grid-template-columns: auto auto;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .reviews-container-modal ul {
+    grid-template-columns: auto auto auto;
   }
 }
 .reviews-container-modal ul {
@@ -564,6 +549,11 @@ nav h1 a {
   border: 1px solid var(--c-bd-color-row-default);
   padding: calc(var(--default-pad) * 2);
   border-radius: 4px;
+}
+@media screen and (min-width: 650px) {
+  .reviews-container-modal li {
+    margin-top: calc(var(--default-y-mg) * 4);
+  }
 }
 .reviews-container-modal .review-date {
   width: 100%;
@@ -583,7 +573,12 @@ nav h1 a {
   font-size: smaller;
 }
 @media screen and (min-width: 400px) {
+  .reviews-container-modal .review-author,
+  .reviews-container-modal .review-rating {
+    padding-top: var(--default-pad);
+  }
   .reviews-container-modal .review-comments {
     font-size: inherit;
+    padding: 0;
   }
 }

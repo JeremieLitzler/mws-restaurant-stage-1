@@ -38,38 +38,29 @@
             <div class="restaurant-img-container">
                 <img id="restaurant-img">
             </div>
-            <div class="c-btn btn-default">
-                <button class="btn-resto-hours" value="View opening hours" onclick="document.getElementById('restaurant-hours').style.display='block'">
-                    View opening hours
+            <button class="c-btn btn-default btn-resto-hours" title="View opening hours" onclick="document.getElementById('restaurant-hours').style.display='block'">
+                View opening hours
+            </button>
+            <section id="restaurant-hours" class="restaurant-hours-container-modal">
+                <h2>Opening hours</h2>
+                <table id="restaurant-hours-table"></table>
+                <button class="c-btn btn-default" title="Close" onclick="document.getElementById('restaurant-hours').style.display='none'">
+                    Toggle
                 </button>
-            </div>
-            <div class="c-btn btn-default">
-                <button value="Read reviews" onclick="document.getElementById('reviews-container').style.display='block'">
-                    Read reviews
-                </button>
-            </div>
-        </section>
-        <section id="restaurant-hours" class="c-modal restaurant-hours-container-modal">
-            <h2>Opening hours</h2>
-            <table id="restaurant-hours-table"></table>
-            <div class="btn-close-modal">
-                <div class="c-btn btn-default">
-                    <button value="Close" onclick="document.getElementById('restaurant-hours').style.display='none'">
-                        Close
-                    </button>
-                </div>
-            </div>
+            </section>
+
+            <button class="c-btn btn-default" title="Read reviews" onclick="document.getElementById('reviews-container').style.display='block'">
+                Read reviews
+            </button>
         </section>
         <!-- end restaurant -->
         <!-- Beginning reviews -->
         <section id="reviews-container" class="c-modal reviews-container-modal">
             <ul id="reviews-list"></ul>
             <div class="btn-close-modal">
-                <div class="c-btn btn-default">
-                    <button value="Close" onclick="document.getElementById( 'reviews-container').style.display='none'">
-                        Close
-                    </button>
-                </div>
+                <button class="c-btn btn-default" title="Close" onclick="document.getElementById( 'reviews-container').style.display='none'">
+                    Close
+                </button>
             </div>
         </section>
         <!-- End reviews -->

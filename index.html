@@ -24,9 +24,7 @@
         </section>
         <section class="restaurants-container">
             <div class="filter-options">
-                <div class="c-btn btn-default">
-                    <button title="Open the search" class="filter-list" href="#" onclick="document.getElementById('filters-modal').style.display='block'">Search</button>
-                </div>
+                <button class="c-btn btn-default" title="Open the search" class="filter-list" href="#" onclick="document.getElementById('filters-modal').style.display='block'">Search</button>
             </div>
             <ul id="restaurants-list"></ul>
         </section>
@@ -44,9 +42,7 @@
         <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
             <option value="all">All Cuisines</option>
         </select>
-        <div class="c-btn btn-default">
-            <button href="#" title="Close Search" onclick="document.getElementById('filters-modal').style.display='none'">Close Search</button>
-        </div>
+        <button class="c-btn btn-default" href="#" title="Close Search" onclick="document.getElementById('filters-modal').style.display='none'">Close Search</button>
     </div>
     <script type="application/javascript" charset="utf-8" src="js/app.js"></script>
     <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
