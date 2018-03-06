@@ -1,0 +1,24 @@
+{
+	"name": "mws-nd-2018-stage-1",
+	"version": "1.0.0",
+	"description": "Restaurant Reviews app with Udacity MWS ND 2018",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/JeremieLitzler/mws-restaurant-stage-1.git"
+	},
+	"author": "JL",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/JeremieLitzler/mws-restaurant-stage-1/issues"
+	},
+	"homepage": "https://github.com/JeremieLitzler/mws-restaurant-stage-1#readme",
+	"devDependencies": {
+		"gulp": "^3.9.1",
+		"gulp-load-plugins": "^1.5.0",
+		"gulp-responsive": "^2.9.0"
+	}
+}

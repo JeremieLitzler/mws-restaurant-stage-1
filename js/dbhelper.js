@@ -169,7 +169,14 @@ class DBHelper {
   /**
    * Restaurant image URL.
    */
-  static imageUrlForRestaurant(restaurant) {
+  static imageUrlForRestaurant(restaurant, isIcon = false) {
+    if (isIcon) {
+      return `${appAlias}/img/dist/${restaurant.photograph}`.replace(
+        new RegExp(".jpg", "gm"),
+        "-128w.jpg"
+      );
+    }
+
     return `${appAlias}/img/${restaurant.photograph}`;
   }
 

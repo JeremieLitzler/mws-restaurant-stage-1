@@ -153,7 +153,8 @@ createRestaurantHTML = restaurant => {
   const image = document.createElement("img");
   image.className = "restaurant-img";
   image.alt = restaurant.name;
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  const isIcon = true;
+  image.src = DBHelper.imageUrlForRestaurant(restaurant, isIcon);
   imageContainer.appendChild(image);
   li.append(imageContainer);
 
@@ -177,9 +178,9 @@ createRestaurantHTML = restaurant => {
   li.append(descriptionItems);
 
   const moreContainer = document.createElement("span");
-  moreContainer.className = "more-container c-btn btn-default btn-small";
+  moreContainer.className = "more-container";
   const more = document.createElement("a");
-  more.className = "btn-more";
+  more.className = "c-btn btn-default btn-small btn-more";
   more.innerHTML = "More";
   more.href = DBHelper.urlForRestaurant(restaurant);
   moreContainer.appendChild(more);
