@@ -11,9 +11,10 @@
 </head>
 
 <body>
+    <a href="#filters" class="c-skip-link c-btn">Skip to search</a>
     <header>
         <h1>
-            <a href="/">Restaurant Reviews</a>
+            <a class="c-link-on-dark" href="/">Restaurant Reviews</a>
         </h1>
         <nav>
         </nav>
@@ -23,7 +24,7 @@
             <div id="map" aria-hidden="true"></div>
         </section>
         <section class="restaurants-container">
-            <div class="filter-options">
+            <div id="filters" class="filter-options">
                 <button class="c-btn btn-default" title="Open the search" class="filter-list" href="#" onclick="document.getElementById('filters-modal').style.display='block'">Search</button>
             </div>
             <ul id="restaurants-list"></ul>
@@ -36,7 +37,7 @@
         </a> All Rights Reserved.
     </footer>
     <div id="filters-modal" class="c-modal">
-        <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+        <select tabindex="-1" id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
             <option value="all">All Neighborhoods</option>
         </select>
         <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">

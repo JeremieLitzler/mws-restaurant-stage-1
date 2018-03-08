@@ -22,6 +22,12 @@
   /* default link text color on hover when background is dark */
   --link-color-hover-on-dark: var(--brand-color);
 
+  /* top layer z-index value */
+  --top-layer: 100;
+  /* define below other layers! */
+  --modal-layer: 90;
+
+  /* end of layer definitions */
   /* default font size */
   --fs-default: 1em;
   /* default line height */
@@ -173,7 +179,10 @@ button {
   padding: var(--default-pad);
   cursor: pointer;
 }
-.btn-default:hover {
+.btn-default:hover,
+.btn-default a:hover,
+.btn-default:focus,
+.btn-default a:focus {
   background-color: var(--bg-dark);
   color: var(--text-light);
   border: 1px solid var(--brand-color);
@@ -197,13 +206,14 @@ button {
 }
 .c-modal {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: var(--bg-light);
   text-align: center;
+  z-index: var(--modal-layer);
 }
 .btn-close-modal {
   position: fixed;
@@ -214,6 +224,21 @@ button {
   width: 100%;
 }
 
+.c-link-on-dark a:hover,
+.c-link-on-dark a:focus {
+  color: var(--link-color-hover-on-dark);
+  text-decoration: underline;
+}
+.c-skip-link {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  z-index: var(--top-layer);
+  margin: var(--default-y-mg) var(--default-x-mg);
+}
+.c-skip-link:focus {
+  top: 0;
+}
 /* ====================== Header ====================== */
 
 header {
@@ -467,10 +492,10 @@ nav h1 a {
 
   .resto-page-container .map-container {
     grid-row: 1 / -1;
-    grid-column: 1 / 8;
+    grid-column: 6 / -1;
   }
-  .map-container ~ section {
-    grid-column: 8 / -1;
+  .restaurant-details-container {
+    grid-column: 1 / 6;
   }
   .map-container > #map {
     height: 100%;
@@ -485,6 +510,7 @@ nav h1 a {
 .reviews-container-modal,
 .restaurant-hours-container-modal {
   display: none;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 500px) {
@@ -517,11 +543,9 @@ nav h1 a {
 .reviews-container-modal {
   line-height: initial;
   overflow-y: scroll;
-  height: initial;
 }
 
 @media screen and (min-width: 650px) {
-  .reviews-container-modal,
   .restaurant-hours-container-modal {
     height: inherit;
   }
