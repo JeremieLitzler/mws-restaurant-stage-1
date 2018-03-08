@@ -29,7 +29,7 @@ Most of the code in this project has been written to the ES6 JavaScript specific
 ### Gulp
 
 Install Gulp CLI: `npm install --save-dev gulp-cli -g`
-
 Install Gulp: `npm install --save-dev gulp -D`
-
 Install Gulp responsive images: `npm install --save-dev gulp-responsive`
+Install Critical path: ``
+Install Workbox: ``
