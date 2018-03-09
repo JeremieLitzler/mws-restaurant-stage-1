@@ -546,9 +546,6 @@ nav h1 a {
 }
 
 @media screen and (min-width: 650px) {
-  .restaurant-hours-container-modal {
-    height: inherit;
-  }
   .reviews-container-modal ul {
     display: grid;
     grid-template-columns: auto auto;

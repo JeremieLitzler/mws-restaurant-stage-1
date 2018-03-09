@@ -12,7 +12,7 @@
 </head>
 
 <body class="inside">
-
+    <a href="#restaurant-actions" class="c-skip-link c-btn">View opening hours</a>
     <header>
         <h1>
             <a class="c-link-on-dark" href="/">Restaurant Reviews</a>
@@ -25,7 +25,7 @@
     </ul>
 
     <main id="maincontent" class="resto-page-container">
-        <!-- Beginning restaurant -->
+
         <section id="restaurant-container" class="restaurant-details-container">
             <h1 id="restaurant-name"></h1>
             <p id="restaurant-cuisine"></p>
@@ -33,32 +33,33 @@
             <div class="restaurant-img-container">
                 <img id="restaurant-img">
             </div>
-            <button class="c-btn btn-default btn-resto-hours" title="View opening hours" onclick="document.getElementById('restaurant-hours').style.display='block'">
-                View opening hours
-            </button>
-            <section id="restaurant-hours" class="restaurant-hours-container-modal">
-                <h2>Opening hours</h2>
-                <table id="restaurant-hours-table"></table>
-                <button class="c-btn btn-default" title="Close" onclick="document.getElementById('restaurant-hours').style.display='none'">
-                    Toggle
+            <div id="restaurant-actions">
+                <button class="c-btn btn-default btn-resto-hours open-hours-modal js-restaurant-hours-modal" title="View opening hours">
+                    View opening hours
                 </button>
-            </section>
+                <button class="c-btn btn-default open-reviews-modal js-reviews-modal" title="Read reviews">
+                    Read reviews
+                </button>
+            </div>
+        </section>
 
-            <button class="c-btn btn-default" title="Read reviews" onclick="document.getElementById('reviews-container').style.display='block'">
-                Read reviews
+        <section id="restaurant-hours" class="c-modal restaurant-hours-container-modal js-restaurant-hours-modal">
+            <h2>Opening hours</h2>
+            <table id="restaurant-hours-table"></table>
+            <button class="c-btn btn-default js-close-modal" title="Close" onclick="document.getElementById('restaurant-hours').style.display='none'">
+                Close
             </button>
         </section>
-        <!-- end restaurant -->
-        <!-- Beginning reviews -->
-        <section id="reviews-container" class="c-modal reviews-container-modal">
+
+        <section id="reviews-container" class="c-modal reviews-container-modal js-reviews-modal">
             <ul id="reviews-list"></ul>
-            <div class="btn-close-modal">
+            <div class="btn-close-modal js-close-modal">
                 <button class="c-btn btn-default" title="Close" onclick="document.getElementById( 'reviews-container').style.display='none'">
                     Close
                 </button>
             </div>
         </section>
-        <!-- End reviews -->
+
         <!-- Beginning map -->
         <section class="map-container">
             <div id="map" aria-hidden="true"></div>
@@ -80,6 +81,8 @@
     <script type="text/javascript" src="js/dbhelper.js"></script>
     <!-- Main javascript file -->
     <script type="text/javascript" src="js/restaurant_info.js"></script>
+    <script type="application/javascript" charset="utf-8" src="js/focus.handler.js"></script>
+
     <!-- Google Maps -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXysE433qRY0W9gup0-_N5UF_0ObJK3oc&libraries=places&callback=initMap"></script>
     <!-- End scripts -->
