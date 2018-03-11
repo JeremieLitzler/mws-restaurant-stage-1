@@ -86,8 +86,6 @@ updateRestaurants = () => {
     const cuisine = cSelect[cIndex].value;
     const neighborhood = nSelect[nIndex].value;
     document.getElementById("filters-modal").style.display = "none";
-    const filtersContainer = document.getElementById("filters");
-    filtersContainer.focus();
     DBHelper.fetchRestaurantByCuisineAndNeighborhood(cuisine, neighborhood, (error, restaurants) => {
         if (error) {
             // Got an error!
