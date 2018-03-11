@@ -1,57 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
-    <link rel="stylesheet" src="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/styles.css">
-    <title>Restaurant Reviews</title>
-</head>
-
-<body>
-    <a href="#filters" class="c-skip-link c-btn">Skip to search</a>
-    <header>
-        <h1>
-            <a class="c-link-on-dark" href="/">Restaurant Reviews</a>
-        </h1>
-        <nav>
-        </nav>
-    </header>
-    <main id="maincontent">
-        <section id="map-container">
-            <div id="map" aria-hidden="true"></div>
-        </section>
-        <section class="restaurants-container">
-            <div id="filters" class="filter-options">
-                <button class="c-btn btn-default open-search-modal js-filters-modal" title="Open the search" href="#">
-                    Search
-                </button>
-            </div>
-            <ul id="restaurants-list"></ul>
-        </section>
-    </main>
-    <footer id="footer">
-        Copyright (c) 2018
-        <a href="/">
-            <strong>Restaurant Reviews</strong>
-        </a> All Rights Reserved.
-    </footer>
-    <div id="filters-modal" class="c-modal js-filters-modal">
-        <select tabindex="-1" id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
-            <option value="all">All Neighborhoods</option>
-        </select>
-        <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
-            <option value="all">All Cuisines</option>
-        </select>
-        <button class="c-btn btn-default js-close-modal" href="#" title="Close Search" onclick="document.getElementById('filters-modal').style.display='none'">Close Search</button>
-    </div>
-    <script type="application/javascript" charset="utf-8" src="js/app.js"></script>
-    <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
-    <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
-    <script type="application/javascript" charset="utf-8" src="js/focus.handler.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXysE433qRY0W9gup0-_N5UF_0ObJK3oc&libraries=places&callback=initMap"></script>
-</body>
-
+    <head>
+        <meta charset="utf-8">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+                <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css"/>
+                <link rel="stylesheet" src="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+                <link href="css/styles.css" rel="stylesheet">
+                    <title>
+                        Restaurant Reviews
+                    </title>
+                </link>
+            </meta>
+        </meta>
+    </head>
+    <body>
+        <a class="c-skip-link c-btn" href="#filters">
+            Skip to search
+        </a>
+        <header>
+            <h1>
+                <a class="c-link-on-dark" href="/">
+                    Restaurant Reviews
+                </a>
+            </h1>
+            <nav>
+            </nav>
+        </header>
+        <main id="maincontent">
+            <section id="map-container">
+                <div aria-hidden="true" id="map">
+                </div>
+            </section>
+            <section class="restaurants-container">
+                <div class="filter-options" id="filters">
+                    <button class="c-btn btn-default open-search-modal js-filters-modal" href="#" title="Open the search">
+                        Search
+                    </button>
+                </div>
+                <ul id="restaurants-list">
+                </ul>
+            </section>
+        </main>
+        <footer id="footer">
+            Copyright (c) 2018
+            <a href="/">
+                <strong>
+                    Restaurant Reviews
+                </strong>
+            </a>
+            All Rights Reserved.
+        </footer>
+        <div class="c-modal js-filters-modal" id="filters-modal">
+            <select id="neighborhoods-select" name="neighborhoods" tabindex="-1">
+                <option value="all">
+                    All Neighborhoods
+                </option>
+            </select>
+            <select id="cuisines-select" name="cuisines">
+                <option value="all">
+                    All Cuisines
+                </option>
+            </select>
+            <button class="c-btn btn-default js-close-modal" href="#" onclick="document.getElementById('filters-modal').style.display='none'" title="Close Search">
+                Close Search
+            </button>
+        </div>
+        <script charset="utf-8" src="js/app.js" type="application/javascript">
+        </script>
+        <script charset="utf-8" src="js/dbhelper.js" type="application/javascript">
+        </script>
+        <script charset="utf-8" src="js/main.js" type="application/javascript">
+        </script>
+        <script charset="utf-8" src="js/focus.handler.js" type="application/javascript">
+        </script>
+        <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXysE433qRY0W9gup0-_N5UF_0ObJK3oc&libraries=places&callback=initMap">
+        </script>
+    </body>
 </html>
