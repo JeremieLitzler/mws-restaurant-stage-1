@@ -55,8 +55,9 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     address.innerHTML = restaurant.address;
     const image = document.getElementById("restaurant-img");
     image.className = "restaurant-img";
-    image.alt = `Restaurant name: ${restaurant.name}`;
-    image.src = DBHelper.imageUrlForRestaurant(restaurant);
+    image.alt = `Descriptive sheet of the restaurant: ${restaurant.name}`;
+    image.src = DBHelper.imageUrlForRestaurant(restaurant, 128);
+    image.srcset = buildSrcSet(restaurant);
     const cuisine = document.getElementById("restaurant-cuisine");
     cuisine.innerHTML = restaurant.cuisine_type;
     // fill operating hours
@@ -107,6 +108,12 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = review => {
     const li = document.createElement("li");
+    const focusHelper = document.createElement("a");
+    focusHelper.className = "c-focus-helper";
+    focusHelper.innerHTML = "Go to next review";
+    focusHelper.title = "Go to next review or hit ESC to close";
+    focusHelper.href = `#`;
+    li.appendChild(focusHelper);
     const date = document.createElement("p");
     date.className = "review-date";
     date.innerHTML = `Published: ${review.date}`;
@@ -155,3 +162,14 @@ getParameterByName = (name, url) => {
     if (!results[2]) return "";
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 };
+/**
+ * Build the string value of the srcset attribute of an image element.
+ * @param {restaurant} restaurant
+ */
+function buildSrcSet(restaurant) {
+    const img360w = DBHelper.imageUrlForRestaurant(restaurant, 360);
+    const img480w = DBHelper.imageUrlForRestaurant(restaurant, 480);
+    const imgOriginalImproved = DBHelper.imageUrlForRestaurant(restaurant);
+    const srcsetVal = `${img360w} 360w, ${img480w} 480w, ${imgOriginalImproved} 800w`;
+    return srcsetVal;
+}

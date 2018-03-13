@@ -150,11 +150,11 @@ class DBHelper {
     /**
      * Restaurant image URL.
      */
-    static imageUrlForRestaurant(restaurant, isIcon = false) {
-        if (isIcon) {
-            return `${appAlias}/img/dist/${restaurant.photograph}`.replace(new RegExp(".jpg", "gm"), "-128w.jpg");
+    static imageUrlForRestaurant(restaurant, imgWidth = null) {
+        if (imgWidth !== null) {
+            return `${appAlias}/img/dist/${restaurant.id}-${imgWidth}w.jpg`;
         }
-        return `${appAlias}/img/${restaurant.photograph}`;
+        return `${appAlias}/img/dist/${restaurant.id}-better-original.jpg`;
     }
     /**
      * Map marker for a restaurant.

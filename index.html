@@ -39,6 +39,9 @@
                 </div>
                 <ul id="restaurants-list">
                 </ul>
+                <p class="no-restaurant-msg">
+                    No restaurant found for your search.
+                </p>
             </section>
         </main>
         <footer id="footer">
@@ -61,7 +64,10 @@
                     All Cuisines
                 </option>
             </select>
-            <button class="c-btn btn-default js-close-modal" href="#" onclick="document.getElementById('filters-modal').style.display='none'" title="Close Search">
+            <button class="c-btn btn-default js-apply-filters" href="#" title="Apply selected filters to display the list of restaurants">
+                Apply selected filters
+            </button>
+            <button class="c-btn btn-default js-close-modal" title="Close search modal">
                 Close Search
             </button>
         </div>

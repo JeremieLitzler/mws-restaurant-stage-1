@@ -114,13 +114,22 @@ resetRestaurants = restaurants => {
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
     const ul = document.getElementById("restaurants-list");
+    noResultsElement = document.querySelector(".no-restaurant-msg");
     if (restaurants.length === 0) {
-        alert("No restaurants found for selected filter(s).");
+        noResultsElement.style.display = "block";
+    } else {
+        //Make sure the paragraph is not displayed on a new search
+        //yielding results after an empty search.
+        noResultsElement.style.display = "none";
     }
     restaurants.forEach(restaurant => {
         ul.append(createRestaurantHTML(restaurant));
     });
     addMarkersToMap();
+    const filtersContainer = document.getElementById("filters");
+    console.log("about to focus element id filters...");
+    filtersContainer.focus();
+    console.log("element id filters focused? document.activeElement:", document.activeElement);
 };
 /**
  * Create restaurant HTML.
@@ -134,12 +143,12 @@ createRestaurantHTML = restaurant => {
     image.className = "restaurant-img";
     image.alt = `Restaurant name: ${restaurant.name}`;
     const isIcon = true;
-    image.src = DBHelper.imageUrlForRestaurant(restaurant, isIcon);
+    image.src = DBHelper.imageUrlForRestaurant(restaurant, 128);
     imageContainer.appendChild(image);
     li.append(imageContainer);
     const descriptionItems = document.createElement("div");
     descriptionItems.className = "descriptions";
-    const name = document.createElement("h1");
+    const name = document.createElement("h2");
     name.innerHTML = restaurant.name;
     descriptionItems.append(name);
     const neighborhood = document.createElement("p");
