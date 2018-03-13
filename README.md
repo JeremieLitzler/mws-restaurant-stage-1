@@ -1,5 +1,5 @@
 # Mobile Web Specialist Certification Course [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1ae3dfb3b4d140ae8b1133ec62f29096)](https://www.codacy.com/app/jeremie.litzler/mws-restaurant-stage-1?utm_source=github.com&utm_medium=referral&utm_content=JeremieLitzler/mws-restaurant-stage-1&utm_campaign=Badge_Grade)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/1df738c729e070499896/maintainability)](https://codeclimate.com/github/JeremieLitzler/mws-restaurant-stage-1/maintainability)
 ---
 
 #### _Three Stage Course Material Project - Restaurant Reviews_
