@@ -20,15 +20,15 @@
         </a>
         <header>
             <h1>
-                <a class="c-link-on-dark" href="/">
+                <a class="c-link-on-dark" href="/" title="View Home page">
                     Restaurant Reviews
                 </a>
             </h1>
             <nav>
             </nav>
+            <ul class="breadcrumb" id="breadcrumb">
+            </ul>
         </header>
-        <ul class="breadcrumb" id="breadcrumb">
-        </ul>
         <main class="resto-page-container" id="maincontent">
             <section class="restaurant-details-container" id="restaurant-container">
                 <h2 id="restaurant-name">
@@ -38,7 +38,7 @@
                 <p id="restaurant-address">
                 </p>
                 <div class="restaurant-img-container">
-                    <img id="restaurant-img">
+                    <img alt="Featured image of the restaurant" id="restaurant-img">
                     </img>
                 </div>
                 <div id="restaurant-actions">
@@ -50,21 +50,21 @@
                     </button>
                 </div>
             </section>
-            <section class="c-modal restaurant-hours-container-modal js-restaurant-hours-modal" id="restaurant-hours">
+            <section class="c-modal restaurant-hours-container-modal js-restaurant-hours-modal" id="restaurant-hours" role="dialog">
                 <h2>
                     Opening hours
                 </h2>
                 <table id="restaurant-hours-table">
                 </table>
-                <button class="c-btn btn-default js-close-modal" onclick="document.getElementById('restaurant-hours').style.display='none'" title="Close">
+                <button class="c-btn btn-default js-close-modal" title="Close the restaurant opening hours">
                     Close
                 </button>
             </section>
-            <section class="c-modal reviews-container-modal js-reviews-modal" id="reviews-container">
+            <section class="c-modal reviews-container-modal js-reviews-modal" id="reviews-container" role="dialog">
                 <ul id="reviews-list">
                 </ul>
                 <div class="btn-close-modal js-close-modal">
-                    <button class="c-btn btn-default" onclick="document.getElementById( 'reviews-container').style.display='none'" title="Close">
+                    <button class="c-btn btn-default" title="Close the reviews">
                         Close
                     </button>
                 </div>
@@ -80,7 +80,7 @@
         <!-- Beginning footer -->
         <footer id="footer">
             Copyright (c) 2018
-            <a href="/">
+            <a href="/" title="View Home page">
                 <strong>
                     Restaurant Reviews
                 </strong>

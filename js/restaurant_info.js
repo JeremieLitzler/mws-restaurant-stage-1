@@ -52,14 +52,14 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     const name = document.getElementById("restaurant-name");
     name.innerHTML = restaurant.name;
     const address = document.getElementById("restaurant-address");
-    address.innerHTML = restaurant.address;
+    address.innerHTML = `<i>Restaurant address:</i><p>${restaurant.address}</p>`;
     const image = document.getElementById("restaurant-img");
     image.className = "restaurant-img";
-    image.alt = `Descriptive sheet of the restaurant: ${restaurant.name}`;
+    image.alt = `Sneak peek inside the restaurant ${restaurant.name}`;
     image.src = DBHelper.imageUrlForRestaurant(restaurant, 128);
     image.srcset = buildSrcSet(restaurant);
     const cuisine = document.getElementById("restaurant-cuisine");
-    cuisine.innerHTML = restaurant.cuisine_type;
+    cuisine.innerHTML = `<i>Cuisine type:</i> ${restaurant.cuisine_type}`;
     // fill operating hours
     if (restaurant.operating_hours) {
         fillRestaurantHoursHTML();
@@ -108,19 +108,14 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = review => {
     const li = document.createElement("li");
-    const focusHelper = document.createElement("a");
-    focusHelper.className = "c-focus-helper";
-    focusHelper.innerHTML = "Go to next review";
-    focusHelper.title = "Go to next review or hit ESC to close";
-    focusHelper.href = `#`;
-    li.appendChild(focusHelper);
     const date = document.createElement("p");
     date.className = "review-date";
     date.innerHTML = `Published: ${review.date}`;
     li.appendChild(date);
-    const name = document.createElement("p");
+    const name = document.createElement("h3");
     name.className = "review-author";
-    name.innerHTML = `By ${review.name}`;
+    name.tabIndex = "0"; //To help go through the review list using the keyboard.
+    name.innerHTML = `Review of ${review.name}`;
     li.appendChild(name);
     const rating = document.createElement("p");
     rating.className = "review-rating";
@@ -147,7 +142,7 @@ fillBreadcrumb = (restaurant = self.restaurant) => {
  */
 function addHomeLink() {
     const homeLi = document.createElement("li");
-    homeLi.innerHTML = `<li><a href="${appAlias}">Home</a></li>`;
+    homeLi.innerHTML = `<li><a title="Navigate to the Home page" href="${appAlias}">Home</a></li>`;
     return homeLi;
 }
 /**

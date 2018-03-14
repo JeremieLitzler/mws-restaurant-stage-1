@@ -15,11 +15,11 @@
     </head>
     <body>
         <a class="c-skip-link c-btn" href="#filters">
-            Skip to search
+            Skip to searching restaurants
         </a>
         <header>
             <h1>
-                <a class="c-link-on-dark" href="/">
+                <a class="c-link-on-dark" href="/" title="View Home page">
                     Restaurant Reviews
                 </a>
             </h1>
@@ -46,19 +46,28 @@
         </main>
         <footer id="footer">
             Copyright (c) 2018
-            <a href="/">
+            <a href="/" title="View Home page">
                 <strong>
                     Restaurant Reviews
                 </strong>
             </a>
             All Rights Reserved.
         </footer>
-        <div class="c-modal js-filters-modal" id="filters-modal">
+        <div class="c-modal js-filters-modal" id="filters-modal" role="dialog">
+            <h2>
+                You can filter the restaurant list using the dropdowns below
+            </h2>
+            <label for="neighborhoods-select">
+                Select a neighborhood value:
+            </label>
             <select id="neighborhoods-select" name="neighborhoods">
                 <option value="all">
                     All Neighborhoods
                 </option>
             </select>
+            <label for="neighborhoods-select">
+                Select a cuisine value:
+            </label>
             <select id="cuisines-select" name="cuisines">
                 <option value="all">
                     All Cuisines

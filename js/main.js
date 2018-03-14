@@ -163,8 +163,11 @@ createRestaurantHTML = restaurant => {
     const moreContainer = document.createElement("span");
     moreContainer.className = "more-container";
     const more = document.createElement("a");
+    const moreBtnTitle = `Read ${restaurant.name}'s restaurant details`;
     more.className = "c-btn btn-default btn-small btn-more";
-    more.innerHTML = "More";
+    more.innerHTML = "View details";
+    more.setAttribute("aria-label", moreBtnTitle);
+    more.title = moreBtnTitle;
     more.href = DBHelper.urlForRestaurant(restaurant);
     moreContainer.appendChild(more);
     li.append(moreContainer);
