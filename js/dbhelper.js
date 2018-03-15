@@ -152,9 +152,9 @@ class DBHelper {
      */
     static imageUrlForRestaurant(restaurant, imgWidth = null) {
         if (imgWidth !== null) {
-            return `${appAlias}/img/dist/${restaurant.id}-${imgWidth}w.jpg`;
+            return `${appAlias}/img/responsive/${restaurant.id}-${imgWidth}w.jpg`;
         }
-        return `${appAlias}/img/dist/${restaurant.id}-better-original.jpg`;
+        return `${appAlias}/img/responsive/${restaurant.id}-better-original.jpg`;
     }
     /**
      * Map marker for a restaurant.
