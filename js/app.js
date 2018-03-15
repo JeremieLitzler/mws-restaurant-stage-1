@@ -8,3 +8,20 @@ if (location.hostname === "mws-restaurant-stage-1-webdevjlprojects.c9users.io" |
     location.hostname === "mws-nd-s1.puzzlout.com") {
     appAlias = "";
 }
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("js/sw/index.js").then(
+      function(registration) {
+        // Registration was successful
+        console.log(
+          "ServiceWorker registration successful with scope: ",
+          registration.scope
+        );
+      },
+      function(err) {
+        console.log("ServiceWorker registration failed: ", err);
+      }
+    );
+  });
+}
