@@ -1,5 +1,8 @@
 {
+ "author": "Udacity, Jeremie Litzler",
+ "short_name": "Restaurant Reviews",
  "name": "MWS ND Restaurant Reviews App",
+ "default_locale": "en",
  "icons": [
   {
    "src": "\/img/icons/android-icon-36x36.png",
