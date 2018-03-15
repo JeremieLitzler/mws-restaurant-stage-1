@@ -81,6 +81,6 @@ gulp.task('generate-service-worker', () => {
     });
 });
 
-
+//https://stackoverflow.com/a/28460016
 gulp.task('default', ['images']);
 
