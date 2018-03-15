@@ -1,8 +1,8 @@
 const gulp = require('gulp'),
-    critical = require('critical'),
+    //critical = require('critical'),
     $ = require('gulp-load-plugins')(),
     workbox = require('workbox-build');
-let criticalPageToProcess = "index";
+/*let criticalPageToProcess = "index";
 criticalPageToProcess = "restaurant";
 gulp.task('critical', function(cb) {
     critical.generate({
@@ -23,7 +23,7 @@ gulp.task('critical', function(cb) {
         minify: true,
         extract: false
     });
-});
+});*/
 gulp.task('images', function() {
     return gulp.src('img/*.{jpg,png}').pipe($.responsive({
         // Resize all JPG images to three different sizes: 200, 500, and 630 pixels
