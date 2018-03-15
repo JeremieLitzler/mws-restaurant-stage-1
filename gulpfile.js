@@ -1,8 +1,8 @@
 const gulp = require('gulp'),
-    critical = require('critical'),
-    $ = require('gulp-load-plugins')(),
-    workbox = require('workbox-build');
-let criticalPageToProcess = "index";
+    //critical = require('critical'),
+    $ = require('gulp-load-plugins')();
+    //workbox = require('workbox-build');
+/*let criticalPageToProcess = "index";
 criticalPageToProcess = "restaurant";
 gulp.task('critical', function(cb) {
     critical.generate({
@@ -23,7 +23,7 @@ gulp.task('critical', function(cb) {
         minify: true,
         extract: false
     });
-});
+});*/
 gulp.task('images', function() {
     return gulp.src('img/*.{jpg,png}').pipe($.responsive({
         // Resize all JPG images to three different sizes: 200, 500, and 630 pixels
@@ -67,7 +67,7 @@ gulp.task('images', function() {
         withMetadata: false,
     })).pipe(gulp.dest('img/dist'));
 });
-gulp.task('generate-service-worker', () => {
+/*gulp.task('generate-service-worker', () => {
     return workbox.generateSW({
         globDirectory: dist,
         globPatterns: ['**\/*.{html,js}'],
@@ -79,7 +79,7 @@ gulp.task('generate-service-worker', () => {
     }).catch((error) => {
         console.warn('Service worker generation failed: ' + error);
     });
-});
+});*/
 
 //https://stackoverflow.com/a/28460016
 gulp.task('default', ['images']);
