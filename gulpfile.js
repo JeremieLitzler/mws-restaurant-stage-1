@@ -47,7 +47,7 @@ gulp.task('images', function() {
             rename: {
                 suffix: '-better-original'
             },
-        }],
+        }]/*,
         // Resize all PNG images to be retina ready
         '*.png': [{
             width: 250,
@@ -56,7 +56,7 @@ gulp.task('images', function() {
             rename: {
                 suffix: '@2x'
             },
-        }],
+        }],*/
     }, {
         // Global configuration for all images
         // The output quality for JPEG, WebP and TIFF output formats
@@ -80,6 +80,7 @@ gulp.task('generate-service-worker', () => {
         console.warn('Service worker generation failed: ' + error);
     });
 });
-gulp.task('default', function() {
-    runSequence('clean', 'build', 'generate-service-worker');
-});
+
+
+gulp.task('default', ['images']);
+
