@@ -16,6 +16,18 @@ class DBHelper {
   }
 
   /**
+   * Fetch all restaurants.
+   */
+  static fetchRestaurants(callback) {
+    if (!self.fetch) {
+      this.legacyXHRFetch(callback);
+      return;
+    }
+
+    this.fetchDatabaseData(callback);
+  }
+
+  /**
    * Fetch the data at DBHelper.DATABASE_URL using the Web API method Fetch
    * @param {*} callback
    */
@@ -23,7 +35,7 @@ class DBHelper {
     fetch(DBHelper.DATABASE_URL)
       .then(function(response) {
         if (response.ok) {
-          console.log("Response OK", response);
+          //console.log("Response OK", response);
           return response.json();
         }
         console.log("Featch failed response", response);
@@ -58,17 +70,6 @@ class DBHelper {
     xhr.send();
   }
 
-  /**
-   * Fetch all restaurants.
-   */
-  static fetchRestaurants(callback) {
-    if (!self.fetch) {
-      this.legacyXHRFetch(callback);
-      return;
-    }
-
-    this.fetchDatabaseData(callback);
-  }
   /**
    * Fetch a restaurant by its ID.
    */
