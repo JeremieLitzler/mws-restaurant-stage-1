@@ -45,20 +45,20 @@ self.addEventListener("activate", function(event) {
 self.addEventListener("fetch", function(event) {
   const requestUrl = new URL(event.request.url);
   if (requestUrl.origin === location.origin) {
-    if (
-      requestUrl.pathname === "/" ||
-      requestUrl.pathname === "/mws-restaurant-stage-1/"
+    /*if (
+      requestUrl.pathname === "/"
+      //requestUrl.pathname === "/mws-restaurant-stage-1/"
     ) {
       event.respondWith(caches.match("/index.html"));
       return;
     }
     if (
-      requestUrl.pathname === "/restaurant.html" ||
-      requestUrl.pathname === "/mws-restaurant-stage-1/restaurant.html"
+      requestUrl.pathname === "/restaurant.html")
+      //||       requestUrl.pathname === "/mws-restaurant-stage-1/restaurant.html"
     ) {
-      event.respondWith(caches.match("/restaurant.html"));
+      event.respondWith(caches.match("/mws-restaurant-stage-1/restaurant.html"));
       return;
-    }
+    }*/
     if (requestUrl.pathname.startsWith("/img/dist")) {
       event.respondWith(serveImage(event.request));
       return;
