@@ -8,8 +8,9 @@ class DBHelper {
      */
     static get DATABASE_URL() {
         const port = isSsl ? 443 : 80; // Change this to your server port
-        const jsonUrl = isSsl ? `${origin}:443${appAlias}/data/restaurants.json` : `${origin}${appAlias}/data/restaurants.json`;
-        console.log(jsonUrl);
+        const jsonUrl = isSsl ? `${origin}:443${appAlias}/data/restaurants.json` :
+            `${origin}${appAlias}/data/restaurants.json`;
+        //console.log(jsonUrl);
         return jsonUrl;
     }
     /**

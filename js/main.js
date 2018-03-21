@@ -127,9 +127,9 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
     });
     addMarkersToMap();
     const filtersContainer = document.getElementById("filters");
-    console.log("about to focus element id filters...");
+    //console.log("about to focus element id filters...");
     filtersContainer.focus();
-    console.log("element id filters focused? document.activeElement:", document.activeElement);
+    //console.log("element id filters focused? document.activeElement:", document.activeElement);
 };
 /**
  * Create restaurant HTML.

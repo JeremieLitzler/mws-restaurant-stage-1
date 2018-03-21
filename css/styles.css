@@ -2,553 +2,617 @@
 /* CSS Document */
 
 :root {
-    --brand-color: orange;
-    --text-brand-color: #2b2b2b;
-    /* default dark background color */
-    --bg-dark: #252831;
-    /* default light background color */
-    --bg-light: #eee;
-    /* default dark text color */
-    --text-dark: #333;
-    /* default light text color */
-    --text-light: #fff;
-    /* default link text color */
-    --link-color: #3397db;
-    /* default link text color over dark background */
-    --link-color-on-dark: #81c0ea;
-    /* default darker link text color */
-    --link-color-darker: #01447e;
-    /* default link text color on hover */
-    --link-color-hover: var(--text-dark);
-    /* default link text color on hover when background is dark */
-    --link-color-hover-on-dark: var(--brand-color);
-    /* top layer z-index value */
-    --top-layer: 100;
-    /* define below other layers! */
-    --modal-layer: 90;
-    /* end of layer definitions */
-    /* default font size */
-    --fs-default: 1em;
-    /* default line height */
-    --lh-default: 1em;
-    /* default top and bottom margin */
-    --default-y-mg: 8px;
-    /* default left and righ margin */
-    --default-x-mg: 8px;
-    /* default padding all around */
-    --default-pad: 16px;
-    /* COMPONENTS VAR */
-    /* default light background color for a component */
-    --c-bg-light: #f3f3f3;
-    /* default light background color for a row component */
-    --c-bg-row-default: #fff;
-    /* default border color for a row component */
-    --c-bd-color-row-default: #949494;
-    /* default button width */
-    --c-btn-default-width: 144px;
-    /* default button width */
-    --c-btn-small-width: calc(var(--c-btn-default-width) / 3);
-    /* default button height */
-    --c-btn-min-height: 48px;
-    /* default font size for a button component */
-    --c-btn-fs-default: 1.2em;
-    /* default line height for a button component */
-    --c-btn-lh-default: 48px;
-    /* default row height */
-    --c-row-min-height: 64px;
+  --brand-color: orange;
+  --text-brand-color: #2b2b2b;
+  /* default dark background color */
+  --bg-dark: #252831;
+  /* default light background color */
+  --bg-light: #eee;
+  /* default dark text color */
+  --text-dark: #333;
+  /* default light text color */
+  --text-light: #fff;
+  /* default link text color */
+  --link-color: #3397db;
+  /* default link text color over dark background */
+  --link-color-on-dark: #81c0ea;
+  /* default darker link text color */
+  --link-color-darker: #01447e;
+  /* default link text color on hover */
+  --link-color-hover: var(--text-dark);
+  /* default link text color on hover when background is dark */
+  --link-color-hover-on-dark: var(--brand-color);
+  /* top layer z-index value */
+  --top-layer: 100;
+  /* define below other layers! */
+  --modal-layer: 90;
+  /* end of layer definitions */
+  /* default font size */
+  --fs-default: 1em;
+  /* default line height */
+  --lh-default: 1em;
+  /* default top and bottom margin */
+  --default-y-mg: 8px;
+  /* default left and righ margin */
+  --default-x-mg: 8px;
+  /* default padding all around */
+  --default-pad: 16px;
+  /* default border radius */
+  --default-bd-radius: 0.25em;
+  /* a light shadow (to use over dark background) */
+  --shadow-light: 0 0 8px 3px rgba(255, 255, 255, 0.8);
+  /* a dark shadow (to use over light background) */
+  --shadow-dark: 0 0 8px 3px rgba(12, 12, 12, 0.8);
+  /* COMPONENTS VAR */
+  /* default light background color for a component */
+  --c-bg-light: #f3f3f3;
+  /* default light background color for a row component */
+  --c-bg-row-default: #fff;
+  /* default border color for a row component */
+  --c-bd-color-row-default: #949494;
+  /* default button width */
+  --c-btn-default-width: 144px;
+  /* default button width */
+  --c-btn-small-width: calc(var(--c-btn-default-width) / 3);
+  /* default button height */
+  --c-btn-min-height: 48px;
+  /* default font size for a button component */
+  --c-btn-fs-default: 1.2em;
+  /* default line height for a button component */
+  --c-btn-lh-default: 48px;
+  /* default row height */
+  --c-row-min-height: 64px;
 }
-html, body {
-    height: 100vh;
+html,
+body {
+  height: 100vh;
 }
-body, td, th, p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: var(--fs-default);
-    color: var(--text-dark);
+body,
+td,
+th,
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--fs-default);
+  color: var(--text-dark);
 }
 p {
-    /* decrese default margin from webkit */
-    -webkit-margin-before: 0.25rem;
-    -webkit-margin-after: 0.25rem;
+  /* decrese default margin from webkit */
+  -webkit-margin-before: 0.25rem;
+  -webkit-margin-after: 0.25rem;
 }
 body {
-    background-color: var(--bg-light);
-    margin: 0;
-    position: relative;
+  background-color: var(--bg-light);
+  margin: 0;
+  position: relative;
 }
-ul, li {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--text-dark);
-    list-style: none;
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    -webkit-margin-start: 0;
-    -webkit-margin-end: 0;
-    -webkit-padding-start: 0;
+ul,
+li {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-dark);
+  list-style: none;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-start: 0;
 }
 a {
-    color: var(--brand-color);
-    text-decoration: none;
+  color: var(--brand-color);
+  text-decoration: none;
+  border-radius: var(--default-bd-radius);
 }
-a:hover, a:focus {
-    color: var(--link-color);
-    text-decoration: none;
+a:hover,
+a:focus {
+  text-decoration: underline;
 }
 a img {
-    border: none 0 #fff;
+  border: none 0 #fff;
 }
-h1, h2, h3, h4, h5, h6 {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: calc(var(--lh-default) * 1.5);
-    /*  RESET USER AGENT STYLES on hX elements */
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: calc(var(--lh-default) * 1.5);
+  /*  RESET USER AGENT STYLES on hX elements */
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
 }
-article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-    display: block;
-    max-width: 100%;
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+  max-width: 100%;
 }
 button {
-    background-color: transparent;
-    border: none;
-    margin: 0;
-    padding: 0;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 main {
-    background-color: var(--bg-light);
+  background-color: var(--bg-light);
 }
 footer {
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-    text-align: center;
-    text-transform: uppercase;
-    padding: var(--default-pad);
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  text-align: center;
+  text-transform: uppercase;
+  padding: var(--default-pad);
+}
+/* Add focus box shadow for any element focused over DARK background  */
+:focus {
+  outline: 0;
+  box-shadow: var(--shadow-light);
 }
 .debug {
-    border: 1px solid red;
+  border: 1px solid red;
 }
 /* ====================== Components ====================== */
 
 .c-btn {
-    background-color: var(--brand-color);
-    color: var(--text-brand-color);
-    border: 0;
-    width: 144px;
-    min-width: var(--c-btn-default-width);
-    max-width: 80%;
-    margin: var(--default-y-mg) 0;
-    margin-right: calc(var(--default-x-mg) * 2);
-    display: inline-block;
-    border-radius: 0.25em;
-    font-size: var(--fs-default);
-    padding: var(--default-pad);
-    cursor: pointer;
+  background-color: var(--brand-color);
+  color: var(--text-brand-color);
+  border: 0;
+  width: 144px;
+  min-width: var(--c-btn-default-width);
+  max-width: 80%;
+  margin: var(--default-y-mg) 0;
+  margin-right: calc(var(--default-x-mg) * 2);
+  display: inline-block;
+  border-radius: var(--default-bd-radius);
+  font-size: var(--fs-default);
+  padding: var(--default-pad);
+  cursor: pointer;
+}
+.c-btn:focus {
+  outline: 0;
+  box-shadow: var(--shadow-dark);
+}
+
+.c-btn-over-dark:focus {
+  outline: 0;
+  box-shadow: var(--shadow-light);
 }
 @media screen and (max-width: 399px) {
-    .c-btn {
-        padding: calc(var(--default-pad) / 2);
-    }
+  .c-btn {
+    padding: calc(var(--default-pad) / 2);
+  }
 }
-.btn-default:hover, .btn-default a:hover, .btn-default:focus, .btn-default a:focus {
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-    border: 1px solid var(--brand-color);
-    text-decoration: underline;
+.btn-default:hover,
+.btn-default a:hover,
+.btn-default:focus,
+.btn-default a:focus {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  border: 1px solid var(--brand-color);
+  text-decoration: underline;
 }
 .btn-small {
-    width: 48px;
-    min-width: var(--c-btn-small-width);
-    text-align: center;
+  width: 48px;
+  min-width: var(--c-btn-small-width);
+  text-align: center;
 }
 .row-default {
-    height: var(--c-row-min-height);
-    min-height: var(--c-row-min-height);
-    background-color: var(--c-bg-row-default);
-    padding: var(--default-pad) 0 var(--default-pad) var(--default-pad);
-    border-bottom: 1px solid var(--c-bd-color-row-default);
+  height: var(--c-row-min-height);
+  min-height: var(--c-row-min-height);
+  background-color: var(--c-bg-row-default);
+  padding: var(--default-pad) 0 var(--default-pad) var(--default-pad);
+  border-bottom: 1px solid var(--c-bd-color-row-default);
 }
 @media screen and (min-width: 650px) {
-    .row-default {
-        padding: calc(var(--default-pad) / 2) 0 calc(var(--default-pad) / 2) calc(var(--default-pad) / 2);
-    }
+  .row-default {
+    padding: calc(var(--default-pad) / 2) 0 calc(var(--default-pad) / 2)
+      calc(var(--default-pad) / 2);
+  }
 }
 .row-default:first-child {
-    border-top: 1px solid var(--c-bd-color-row-default);
+  border-top: 1px solid var(--c-bd-color-row-default);
 }
 .c-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--bg-light);
-    text-align: center;
-    z-index: var(--modal-layer);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-light);
+  text-align: center;
+  z-index: var(--modal-layer);
 }
 .btn-close-modal {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background-color: var(--bg-dark);
-    border-top: 1px solid var(--c-bd-color-row-default);
-    width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: var(--bg-dark);
+  border-top: 1px solid var(--c-bd-color-row-default);
+  width: 100%;
 }
-.c-link-on-dark a:hover, .c-link-on-dark a:focus {
-    color: var(--link-color-hover-on-dark);
-    text-decoration: underline;
+.c-link-on-dark a:hover,
+.c-link-on-dark a:focus {
+  color: var(--link-color-hover-on-dark);
+  text-decoration: underline;
 }
 .c-skip-link {
-    position: absolute;
-    top: -9999px;
-    left: 0;
-    z-index: var(--top-layer);
-    margin: var(--default-y-mg) var(--default-x-mg);
+  position: absolute;
+  top: -9999px;
+  left: 0;
+  z-index: var(--top-layer);
+  margin: var(--default-y-mg) var(--default-x-mg);
+}
+.c-skip-link a,
+.c-skip-link a:focus {
+  color: var(--text-dark);
 }
 .c-skip-link:focus {
-    top: 0;
+  top: 0;
 }
 /* ====================== Header ====================== */
 
 header {
-    background-color: var(--bg-dark);
+  background-color: var(--bg-dark);
 }
 header h1 {
-    line-height: initial;
-    text-align: center;
-    margin: 0;
-    padding: var(--default-pad);
+  line-height: initial;
+  text-align: center;
+  margin: 0;
+  padding: var(--default-pad);
 }
 @media screen and (min-width: 650px) {
-    header h1 {
-        padding: calc(var(--default-pad) * 1.25);
-    }
+  header h1 {
+    padding: calc(var(--default-pad) * 1.25);
+  }
 }
 @media screen and (min-width: 1024px) {
-    header h1 {
-        padding: calc(var(--default-pad) * 1.5);
-    }
+  header h1 {
+    padding: calc(var(--default-pad) * 1.5);
+  }
 }
 /* ====================== Navigation ====================== */
 
 nav {
-    text-align: center;
+  text-align: center;
 }
 nav h1 {
-    margin: auto;
+  margin: auto;
 }
 nav h1 a {
-    color: var(--text-light);
-    font-weight: 200;
-    letter-spacing: 10px;
-    text-transform: uppercase;
+  color: var(--text-light);
+  font-weight: 200;
+  letter-spacing: 10px;
+  text-transform: uppercase;
 }
 /* ====================== Map ====================== */
 
 #map {
-    height: 40vh;
-    width: 100%;
-    background-color: var(--c-bg-light);
+  height: 40vh;
+  width: 100%;
+  background-color: var(--c-bg-light);
 }
 /* ====================== Restaurant Filtering ====================== */
 
 .filter-options {
-    text-align: center;
-    clear: both;
+  text-align: center;
+  clear: both;
 }
 #filters-modal select {
-    display: block;
-    margin: var(--default-y-mg) auto;
-    padding: calc(var(--default-pad));
+  display: block;
+  margin: var(--default-y-mg) auto;
+  padding: calc(var(--default-pad));
 }
 select option {
-    background-color: VAR(--BG-DARK);
-    color: VAR(--BRAND-COLOR);
+  background-color: VAR(--BG-DARK);
+  color: VAR(--BRAND-COLOR);
 }
-select option selected, select option:checked {
-    background-color: var(--brand-color);
-    color: var(-var(--text-dark));
+select option selected,
+select option:checked {
+  background-color: var(--brand-color);
+  color: var(-var(--text-dark));
 }
 /* ====================== Restaurant Listing ====================== */
 
 @media screen and (min-width: 400px) {
-    .view-list {
-        display: none;
-    }
+  .view-list {
+    display: none;
+  }
 }
 .restaurants-container {
-    width: 100%;
+  width: 100%;
 }
 .restaurant-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .restaurant-img {
-    max-height: var(--c-row-min-height);
+  max-height: var(--c-row-min-height);
 }
 .descriptions {
-    padding: 0 1rem;
-    width: 100%;
+  padding: 0 1rem;
+  width: 100%;
 }
 .address {
-    display: none;
+  display: none;
 }
 .restaurant-container .more-container {
-    margin-left: auto;
+  margin-left: auto;
 }
 @media screen and (max-width: 399px) {
-    .restaurant-container h2 {
-        font-size: var(--fs-default);
-    }
+  .restaurant-container h2 {
+    font-size: var(--fs-default);
+  }
 }
 @media screen and (min-width: 400px) {
-    .row-default {
-        min-height: calc(var(--c-row-min-height) * 1.2);
-    }
-    .restaurant-container {
-        align-items: center;
-    }
-    .restaurant-img-container {
-        flex: 2;
-        align-self: baseline;
-        height: 100%;
-    }
-    .restaurant-img {
-        max-height: 100%;
-    }
-    .descriptions {
-        flex: 4;
-    }
-    .restaurant-container h2 {
-        font-size: larger;
-    }
-    .more-container {
-        flex: 1;
-    }
-    .more-container a {
-        float: right;
-    }
+  .row-default {
+    min-height: calc(var(--c-row-min-height) * 1.2);
+  }
+  .restaurant-container {
+    align-items: center;
+  }
+  .restaurant-img-container {
+    flex: 2;
+    align-self: baseline;
+    height: 100%;
+  }
+  .restaurant-img {
+    max-height: 100%;
+  }
+  .descriptions {
+    flex: 4;
+  }
+  .restaurant-container h2 {
+    font-size: larger;
+  }
+  .more-container {
+    flex: 1;
+  }
+  .more-container a {
+    float: right;
+  }
 }
 @media screen and (min-width: 650px) {
-    .index-page-container .map-container {
-        height: 50vh;
-    }
-    #restaurants-list {
-        display: grid;
-        grid-template-columns: auto auto;
-    }
-    .restaurant-container {
-        border: 1px solid var(--c-bd-color-row-default);
-        border-radius: 4px;
-        margin-bottom: 16px;
-    }
-    .restaurant-container h2 {
-        font-size: initial;
-    }
+  .index-page-container .map-container {
+    height: 50vh;
+  }
+  #restaurants-list {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .restaurant-container {
+    border: 1px solid var(--c-bd-color-row-default);
+    border-radius: var(--default-bd-radius);
+    margin-bottom: 16px;
+  }
+  .restaurant-container h2 {
+    font-size: initial;
+  }
 }
 @media screen and (min-width: 800px) {
-    .index-page-container {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-    }
-    .index-page-container .map-container {
-        grid-column: 1 / 7;
-        height: 90vh;
-        margin-right: calc(var(--default-x-mg) * 2);
-    }
-    .index-page-container .restaurants-container {
-        grid-column: 7 / 13;
-        max-height: 90vh;
-        overflow: scroll;
-    }
-    #restaurants-list {
-        display: block;
-    }
+  .index-page-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .index-page-container .map-container {
+    grid-column: 1 / 7;
+    height: 90vh;
+    margin-right: calc(var(--default-x-mg) * 2);
+  }
+  .index-page-container .restaurants-container {
+    grid-column: 7 / 13;
+    max-height: 90vh;
+    overflow: scroll;
+  }
+  #restaurants-list {
+    display: block;
+  }
 }
 @media screen and (min-width: 1024px) {
-    .index-page-container {
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-    }
-    .index-page-container .map-container {
-        grid-column: 1 / 10;
-        height: 90vh;
-    }
-    .index-page-container .restaurants-container {
-        grid-column: 10 / 12;
-        max-height: 90vh;
-        overflow: scroll;
-    }
-    .address {
-        display: block;
-    }
+  .index-page-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+  }
+  .index-page-container .map-container {
+    grid-column: 1 / 10;
+    height: 90vh;
+  }
+  .index-page-container .restaurants-container {
+    grid-column: 10 / 12;
+    max-height: 90vh;
+    overflow: scroll;
+  }
+  .address {
+    display: block;
+  }
 }
 /* ====================== Breadcrumb ====================== */
 
 .breadcrumb {
-    padding: 10px 40px 16px;
-    list-style: none;
-    background-color: var(--bg-dark);
-    font-size: var(--fs-default);
-    margin: 0;
+  padding: 10px 40px 16px;
+  list-style: none;
+  background-color: var(--bg-dark);
+  font-size: var(--fs-default);
+  margin: 0;
 }
 /* Display list items side by side */
 
 .breadcrumb li {
-    display: inline;
-    color: var(--text-light);
+  display: inline;
+  color: var(--text-light);
 }
 /* Add a slash symbol (/) before/behind each list item */
 
-.breadcrumb li+li:before {
-    padding: 8px;
-    color: var(--text-light);
-    content: "/\00a0";
+.breadcrumb li + li:before {
+  padding: 8px;
+  color: var(--text-light);
+  content: "/\00a0";
 }
 /* Add a color to all links inside the list */
 
 .breadcrumb li a {
-    color: var(--link-color-on-dark);
-    text-decoration: none;
+  color: var(--link-color-on-dark);
+  text-decoration: none;
 }
 /* Add a color on mouse-over */
 
 .breadcrumb li a:hover {
-    color: var(--link-color-hover-on-dark);
-    text-decoration: underline;
+  color: var(--link-color-hover-on-dark);
+  text-decoration: underline;
 }
 /* ====================== Restaurant Details ====================== */
 
 .resto-page-container #map {
-    height: 20vh;
+  height: 20vh;
 }
-.resto-page-container h2, .resto-page-container p {
-    text-align: center;
+.resto-page-container h2,
+.resto-page-container p {
+  text-align: center;
 }
-.restaurant-details-container, .restaurant-hours-container-modal {
-    text-align: center;
+.restaurant-details-container,
+.restaurant-hours-container-modal {
+  text-align: center;
 }
 .resto-page-container .restaurant-img-container {
-    width: 100%;
-    height: initial;
+  width: 100%;
+  height: initial;
 }
 @media screen and (min-width: 400px) {
-    .resto-page-container .restaurant-img-container {
-        width: 80%;
-        margin: 0 auto;
-    }
-    .resto-page-container .restaurant-img {
-        height: initial;
-    }
-    .restaurant-hours-container-modal table {
-        margin: 0 auto;
-    }
+  .resto-page-container .restaurant-img-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .resto-page-container .restaurant-img {
+    height: initial;
+  }
+  .restaurant-hours-container-modal table {
+    margin: 0 auto;
+  }
 }
 @media screen and (min-width: 650px) {
-    .resto-page-container {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: auto auto auto;
-    }
-    .resto-page-container .map-container {
-        grid-row: 1 / -1;
-        grid-column: 6 / -1;
-    }
-    .restaurant-details-container {
-        grid-column: 1 / 6;
-    }
-    .map-container>#map {
-        height: 100%;
-    }
+  .resto-page-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto auto auto;
+  }
+  .resto-page-container .map-container {
+    grid-row: 1 / -1;
+    grid-column: 6 / -1;
+  }
+  .restaurant-details-container {
+    grid-column: 1 / 6;
+  }
+  .map-container > #map {
+    height: 100%;
+  }
 }
 .resto-page-container .restaurant-img {
-    max-width: 100%;
-    max-height: initial;
+  max-width: 100%;
+  max-height: initial;
 }
-.reviews-container-modal, .restaurant-hours-container-modal {
-    display: none;
-    overflow: hidden;
+.reviews-container-modal,
+.restaurant-hours-container-modal {
+  display: none;
+  overflow: hidden;
 }
 @media screen and (max-width: 500px) {
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-    thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-    td {
-        position: relative;
-        text-align: center;
-    }
-    table>tr {
-        margin: var(--default-y-mg) auto;
-    }
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  td {
+    position: relative;
+    text-align: center;
+  }
+  table > tr {
+    margin: var(--default-y-mg) auto;
+  }
 }
 .restaurant-hours-container-modal td:nth-child(odd) {
-    font-weight: bold;
+  font-weight: bold;
 }
 .reviews-container-modal {
-    line-height: initial;
-    overflow-y: scroll;
+  line-height: initial;
+  overflow-y: scroll;
 }
-.c-focus-helper, .c-focus-helper:focus {
-    background-color: var(--text-light);
-    color: var(--text-light);
-    position: relative;
-    top: -16px;
+.reviews-container-modal h3 {
+  font-size: var(--fs-default);
+  border-radius: var(--default-bd-radius);
+}
+.reviews-container-modal h3:focus {
+  box-shadow: var(--shadow-dark);
 }
 @media screen and (min-width: 650px) {
-    .reviews-container-modal ul {
-        display: grid;
-        grid-template-columns: auto auto;
-    }
+  .reviews-container-modal ul {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
 }
 @media screen and (min-width: 1024px) {
-    .reviews-container-modal ul {
-        grid-template-columns: auto auto auto;
-    }
+  .reviews-container-modal ul {
+    grid-template-columns: auto auto auto;
+  }
 }
 .reviews-container-modal ul {
-    padding-bottom: calc(var(--c-btn-min-height) * 1.5);
+  padding-bottom: calc(var(--c-btn-min-height) * 1.5);
 }
 .reviews-container-modal {
-    font-size: calc(var(--fs-default) * 1.2);
+  font-size: calc(var(--fs-default) * 1.2);
 }
 .reviews-container-modal li {
-    margin: calc(var(--default-y-mg) * 2) calc(var(--default-x-mg) * 2) 0 calc(var(--default-x-mg) * 3);
-    background-color: var(--c-bg-row-default);
-    border: 1px solid var(--c-bd-color-row-default);
-    padding: calc(var(--default-pad) * 2);
-    border-radius: 4px;
+  margin: calc(var(--default-y-mg) * 2) calc(var(--default-x-mg) * 2) 0
+    calc(var(--default-x-mg) * 3);
+  background-color: var(--c-bg-row-default);
+  border: 1px solid var(--c-bd-color-row-default);
+  padding: calc(var(--default-pad) * 2);
+  border-radius: var(--default-bd-radius);
 }
 @media screen and (min-width: 650px) {
-    .reviews-container-modal li {
-        margin-top: calc(var(--default-y-mg) * 4);
-    }
+  .reviews-container-modal li {
+    margin-top: calc(var(--default-y-mg) * 4);
+  }
 }
 .reviews-container-modal .review-date {
-    width: 100%;
-    text-align: right;
-    font-style: italic;
+  width: 100%;
+  text-align: right;
+  font-style: italic;
 }
-.reviews-container-modal .review-author, .reviews-container-modal .review-rating {
-    display: inline-block;
-    width: 50%;
-    font-weight: bold;
+.reviews-container-modal .review-author,
+.reviews-container-modal .review-rating {
+  display: inline-block;
+  width: 50%;
+  font-weight: bold;
 }
 .reviews-container-modal .review-comments {
-    width: 100%;
-    padding: var(--default-pad) 0;
-    text-align: justify;
-    font-size: smaller;
+  width: 100%;
+  padding: var(--default-pad) 0;
+  text-align: justify;
+  font-size: smaller;
 }
 @media screen and (min-width: 400px) {
-    .reviews-container-modal .review-author, .reviews-container-modal .review-rating {
-        padding-top: var(--default-pad);
-    }
-    .reviews-container-modal .review-comments {
-        font-size: inherit;
-        padding: 0;
-    }
+  .reviews-container-modal .review-author,
+  .reviews-container-modal .review-rating {
+    padding-top: var(--default-pad);
+  }
+  .reviews-container-modal .review-comments {
+    font-size: inherit;
+    padding: 0;
+  }
 }

@@ -1,126 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css"/>
-        <!--<link rel="stylesheet" src="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>-->
-        <link href="css/styles.css" rel="stylesheet">
-        <title>Restaurant Reviews - Restaurant sheet</title>
-        <meta name="apple-touch-fullscreen" content="yes">
-        <meta name="author" content="Udacity, Jérémie Litzler">
-        <meta name="description" content="Restaurant reviews webapp.">
-        <meta name="copyright" content="Udacity, tous droits réservés © 2018">
-        <meta name="robots" content="noindex,nofollow">
-        <link rel="apple-touch-icon" sizes="57x57" href="/img/icons/apple-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="/img/icons/apple-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/img/icons/apple-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="/img/icons/apple-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/img/icons/apple-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="/img/icons/apple-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="/img/icons/apple-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="/img/icons/apple-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+    <!--<link rel="stylesheet" src="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>-->
+    <link href="css/styles.css" rel="stylesheet">
+    <title>Restaurant Reviews - Restaurant sheet</title>
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="author" content="Udacity, Jérémie Litzler">
+    <meta name="description" content="Restaurant reviews webapp.">
+    <meta name="copyright" content="Udacity, tous droits réservés © 2018">
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="/img/icons/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16x16.png">
-        <link rel="manifest" href="/manifest.json">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="/img/icons/ms-icon-144x144.png">
-        <meta name="theme-color" content="#ffffff">
-    </head>
-    <body class="inside">
-        <a class="c-skip-link c-btn" href="#restaurant-actions">
-            View opening hours
-        </a>
-        <header>
-            <h1>
-                <a class="c-link-on-dark" href="/" title="View Home page">
-                    Restaurant Reviews
-                </a>
-            </h1>
-            <nav>
-            </nav>
-            <ul class="breadcrumb" id="breadcrumb">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/img/icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body class="inside">
+    <!-- <a class="c-skip-link c-btn c-btn-over-dark" href="#restaurant-actions">
+        Jump to opening hours
+    </a> -->
+    <header>
+        <h1>
+            <a class="c-link-on-dark" href="/" title="View Home page">
+                Restaurant Reviews
+            </a>
+        </h1>
+        <nav>
+        </nav>
+        <ul class="breadcrumb" id="breadcrumb">
+        </ul>
+    </header>
+    <main class="resto-page-container" id="maincontent">
+        <section class="restaurant-details-container" id="restaurant-container">
+            <h2 id="restaurant-name">
+            </h2>
+            <p id="restaurant-cuisine">
+            </p>
+            <p id="restaurant-address">
+            </p>
+            <div class="restaurant-img-container">
+                <img alt="Featured image of the restaurant" id="restaurant-img">
+                </img>
+            </div>
+            <div id="restaurant-actions">
+                <button class="c-btn btn-default btn-resto-hours open-hours-modal js-restaurant-hours-modal" title="View opening hours">
+                    View opening hours
+                </button>
+                <button class="c-btn btn-default open-reviews-modal js-reviews-modal" title="Read reviews">
+                    Read reviews
+                </button>
+            </div>
+        </section>
+        <section class="c-modal restaurant-hours-container-modal js-restaurant-hours-modal" id="restaurant-hours" role="dialog">
+            <h2>
+                Opening hours
+            </h2>
+            <table id="restaurant-hours-table">
+            </table>
+            <button class="c-btn btn-default js-close-modal" title="Close the restaurant opening hours">
+                Close
+            </button>
+        </section>
+        <section class="c-modal reviews-container-modal js-reviews-modal" id="reviews-container" role="dialog">
+            <ul id="reviews-list">
             </ul>
-        </header>
-        <main class="resto-page-container" id="maincontent">
-            <section class="restaurant-details-container" id="restaurant-container">
-                <h2 id="restaurant-name">
-                </h2>
-                <p id="restaurant-cuisine">
-                </p>
-                <p id="restaurant-address">
-                </p>
-                <div class="restaurant-img-container">
-                    <img alt="Featured image of the restaurant" id="restaurant-img">
-                    </img>
-                </div>
-                <div id="restaurant-actions">
-                    <button class="c-btn btn-default btn-resto-hours open-hours-modal js-restaurant-hours-modal" title="View opening hours">
-                        View opening hours
-                    </button>
-                    <button class="c-btn btn-default open-reviews-modal js-reviews-modal" title="Read reviews">
-                        Read reviews
-                    </button>
-                </div>
-            </section>
-            <section class="c-modal restaurant-hours-container-modal js-restaurant-hours-modal" id="restaurant-hours" role="dialog">
-                <h2>
-                    Opening hours
-                </h2>
-                <table id="restaurant-hours-table">
-                </table>
-                <button class="c-btn btn-default js-close-modal" title="Close the restaurant opening hours">
+            <div class="btn-close-modal js-close-modal">
+                <button class="c-btn btn-default" title="Close the reviews">
                     Close
                 </button>
-            </section>
-            <section class="c-modal reviews-container-modal js-reviews-modal" id="reviews-container" role="dialog">
-                <ul id="reviews-list">
-                </ul>
-                <div class="btn-close-modal js-close-modal">
-                    <button class="c-btn btn-default" title="Close the reviews">
-                        Close
-                    </button>
-                </div>
-            </section>
-            <!-- Beginning map -->
-            <section class="map-container">
-                <div aria-hidden="true" id="map">
-                </div>
-            </section>
-            <!-- End map -->
-        </main>
-        <!-- End main -->
-        <!-- Beginning footer -->
-        <footer id="footer">
-            Copyright (c) 2018
-            <a href="/" title="View Home page">
-                <strong>
-                    Restaurant Reviews
-                </strong>
-            </a>
-            All Rights Reserved.
-        </footer>
-        <!-- End footer -->
-        <!-- Beginning scripts -->
-        <script charset="utf-8" src="js/app.js" type="application/javascript">
-        </script>
-        <!-- Database helpers -->
-        <script src="js/dbhelper.js" type="text/javascript">
-        </script>
-        <!-- Main javascript file -->
-        <script src="js/restaurant_info.js" type="text/javascript">
-        </script>
-        <script charset="utf-8" src="js/focus.handler.js" type="application/javascript">
-        </script>
-        <!-- Google Maps -->
-        <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXysE433qRY0W9gup0-_N5UF_0ObJK3oc&libraries=places&callback=initMap">
-        </script>
-        <!-- End scripts -->
-    </body>
+            </div>
+        </section>
+        <!-- Beginning map -->
+        <section class="map-container">
+            <div aria-hidden="true" id="map">
+            </div>
+        </section>
+        <!-- End map -->
+    </main>
+    <!-- End main -->
+    <!-- Beginning footer -->
+    <footer id="footer">
+        Copyright (c) 2018
+        <a href="/" title="View Home page">
+            <strong>Restaurant Reviews</strong>
+        </a>
+        All Rights Reserved.
+    </footer>
+    <!-- End footer -->
+    <!-- Beginning scripts -->
+    <script charset="utf-8" src="js/app.js" type="application/javascript">
+    </script>
+    <!-- Database helpers -->
+    <script src="js/dbhelper.js" type="text/javascript">
+    </script>
+    <!-- Main javascript file -->
+    <script src="js/restaurant_info.js" type="text/javascript">
+    </script>
+    <script charset="utf-8" src="js/focus.handler.js" type="application/javascript">
+    </script>
+    <!-- Google Maps -->
+    <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXysE433qRY0W9gup0-_N5UF_0ObJK3oc&libraries=places&callback=initMap">
+    </script>
+    <!-- End scripts -->
+</body>
+
 </html>
