@@ -40,16 +40,4 @@ gulp.task("images", function() {
 });
 
 //https://stackoverflow.com/a/28460016
-gulp.task(
-  "default",
-  () =>
-    // by default, gulp would pick `assets/css` as the base,
-    // so we need to set it explicitly:
-    gulp
-      .src(["assets/css/*.css", "assets/js/*.js"], { base: "assets" })
-      .pipe(gulp.dest("build/assets")) // copy original assets to build dir
-      .pipe(rev())
-      .pipe(gulp.dest("build/assets")) // write rev'd assets to build dir
-      .pipe(rev.manifest())
-      .pipe(gulp.dest("build/assets")) // write manifest to build dir
-);
+gulp.task("default", ["images"]);
