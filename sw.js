@@ -1,3 +1,11 @@
+let appAlias = "/mws-restaurant-stage-1";
+if (
+  location.hostname === "mws-restaurant-stage-1-webdevjlprojects.c9users.io" ||
+  location.hostname === "mws-nd-s1.puzzlout.com"
+) {
+  appAlias = "";
+}
+
 const staticCacheName = "rreviews-data-v1";
 const contentImgsCache = "rreviews-imgs";
 const allCaches = [staticCacheName, contentImgsCache];
@@ -44,40 +52,51 @@ self.addEventListener("activate", function(event) {
 });
 self.addEventListener("fetch", function(event) {
   const requestUrl = new URL(event.request.url);
-  if (requestUrl.origin === location.origin) {
-    /*if (
-      requestUrl.pathname === "/"
-      //requestUrl.pathname === "/mws-restaurant-stage-1/"
-    ) {
-      event.respondWith(caches.match("/index.html"));
-      return;
-    }
-    if (
-      requestUrl.pathname === "/restaurant.html")
-      //||       requestUrl.pathname === "/mws-restaurant-stage-1/restaurant.html"
-    ) {
-      event.respondWith(caches.match("/mws-restaurant-stage-1/restaurant.html"));
-      return;
-    }*/
-    if (requestUrl.pathname.startsWith("/img/dist")) {
-      event.respondWith(serveImage(event.request));
-      return;
-    }
+  if (requestUrl.origin !== location.origin) {
+    event.respondWith(
+      caches
+        .match(event.request)
+        .then(function(response) {
+          return response || fetch(event.request);
+        })
+        .catch(function(err) {
+          console.log("Failed fetch", event.request);
+        })
+    );
   }
-  event.respondWith(
-    caches
-      .match(event.request)
-      .then(function(response) {
-        return response || fetch(event.request);
-      })
-      .catch(function(err) {
-        console.log("Failed fetch", event.request);
-      })
-  );
+
+  if (requestUrl.pathname.startsWith(`${appAlias}/img/dist`)) {
+    event.respondWith(serveImage(event.request));
+    return;
+  }
+
+  return serveFile(event.request);
 });
 
+function serveFile(request) {
+  const storageUrl = request.url; //.replace(`${appAlias}/`, "");
+  if (storageUrl === "/" || storageUrl === `${appAlias}/`) {
+    console.log("Url is the index page!");
+    storageUrl = `${appAlias}/index.html`;
+  }
+  caches.open(staticCacheName).then(function(cache) {
+    cache.match(storageUrl).then(function(response) {
+      if (response) {
+        console.log("Response found!");
+        return response;
+      }
+      console.log("Response for request not cached", request.url);
+      console.log("Caching response after network fetch...");
+      return fetch(request).then(function(networkResponse) {
+        cache.put(storageUrl, networkResponse.clone());
+        console.log("Resource cached from network!", storageUrl);
+        return networkResponse;
+      });
+    });
+  });
+}
 function serveImage(request) {
-  var storageUrl = request.url.replace(/-\d+px\.jpg$/, "");
+  var storageUrl = request.url.replace(/-\d+w\.jpg$/, "");
   return caches.open(contentImgsCache).then(function(cache) {
     return cache.match(storageUrl).then(function(response) {
       if (response) return response;
