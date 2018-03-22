@@ -18,7 +18,9 @@
 	"homepage": "https://github.com/JeremieLitzler/mws-restaurant-stage-1#readme",
 	"devDependencies": {
 		"gulp": "^3.9.1",
+		"gulp-clean-css": "^3.9.3",
 		"gulp-load-plugins": "^1.5.0",
-		"gulp-responsive": "^2.9.0"
+		"gulp-responsive": "^2.9.0",
+		"gulp-rev": "^8.1.1"
 	}
 }

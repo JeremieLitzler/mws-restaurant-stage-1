@@ -1,32 +1,17 @@
 const gulp = require("gulp"),
-  //critical = require('critical'),
-  $ = require("gulp-load-plugins")();
-//workbox = require('workbox-build');
-/*let criticalPageToProcess = "index";
-criticalPageToProcess = "restaurant";
-gulp.task('critical', function(cb) {
-    critical.generate({
-        base: '/home/ubuntu/workspace/',
-        src: `${criticalPageToProcess}.html`,
-        css: ['css/styles.css'],
-        dimensions: [{
-            width: 320,
-            height: 480
-        }, {
-            width: 768,
-            height: 1024
-        }, {
-            width: 1280,
-            height: 960
-        }],
-        dest: `css/dist/critical.${criticalPageToProcess}.css`,
-        minify: true,
-        extract: false
-    });
-});*/
+  $ = require("gulp-load-plugins")(),
+  cleanCSS = require("gulp-clean-css"),
+  rev = require("gulp-rev");
+
+gulp.task("default", () =>
+  gulp
+    .src("src/*.css")
+    .pipe(rev())
+    .pipe(gulp.dest("dist"))
+);
 gulp.task("images", function() {
   return gulp
-    .src("img/*.{jpg,png}")
+    .src("assets/img/*.{jpg,png}")
     .pipe(
       $.responsive(
         {
@@ -40,16 +25,7 @@ gulp.task("images", function() {
               // Compress, strip metadata, and rename original image //used for the index.html across all viewports // //used for the index.html across all viewports
               rename: { suffix: "-better-original" }
             }
-          ] /*,
-        // Resize all PNG images to be retina ready
-        '*.png': [{
-            width: 250,
-        }, {
-            width: 250 * 2,
-            rename: {
-                suffix: '@2x'
-            },
-        }],*/
+          ]
         },
         {
           // Global configuration for all images
@@ -60,21 +36,20 @@ gulp.task("images", function() {
         }
       )
     ) // Use progressive (interlace) scan for JPEG and PNG output // Strip all metadata
-    .pipe(gulp.dest("img/dist"));
+    .pipe(gulp.dest("build/img"));
 });
-/*gulp.task('generate-service-worker', () => {
-    return workbox.generateSW({
-        globDirectory: dist,
-        globPatterns: ['**\/*.{html,js}'],
-        swDest: `${dist}/sw.js`,
-        clientsClaim: true,
-        skipWaiting: true
-    }).then(() => {
-        console.info('Service worker generation completed.');
-    }).catch((error) => {
-        console.warn('Service worker generation failed: ' + error);
-    });
-});*/
 
 //https://stackoverflow.com/a/28460016
-gulp.task("default", ["images"]);
+gulp.task(
+  "default",
+  () =>
+    // by default, gulp would pick `assets/css` as the base,
+    // so we need to set it explicitly:
+    gulp
+      .src(["assets/css/*.css", "assets/js/*.js"], { base: "assets" })
+      .pipe(gulp.dest("build/assets")) // copy original assets to build dir
+      .pipe(rev())
+      .pipe(gulp.dest("build/assets")) // write rev'd assets to build dir
+      .pipe(rev.manifest())
+      .pipe(gulp.dest("build/assets")) // write manifest to build dir
+);

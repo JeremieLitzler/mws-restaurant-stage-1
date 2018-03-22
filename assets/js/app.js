@@ -23,28 +23,31 @@ function openDatabase() {
     store.createIndex("by-date", "time");
   });
 }
-
 function registerServiceWorker() {
   if (!navigator.serviceWorker) {
     console.log("ServiceWorker is not compatible with this browser...");
     return;
   }
   console.log("ServiceWorker is compatible with this browser!");
-  window.addEventListener("load", function() {
-    console.log("Loading window...");
-    navigator.serviceWorker.register("sw.js").then(
-      function(registration) {
-        // Registration was successful
-        console.log(
-          "ServiceWorker registration successful with scope: ",
-          registration.scope
-        );
-      },
-      function(err) {
-        console.log("ServiceWorker registration failed: ", err);
-      }
-    );
-  });
+  navigator.serviceWorker.register("sw.js").then(
+    function(registration) {
+      // Registration was successful
+      console.log(
+        "ServiceWorker registration successful with scope: ",
+        registration.scope
+      );
+    },
+    function(err) {
+      console.log("ServiceWorker registration failed: ", err);
+    }
+  );
 }
-//openDatabase();
-registerServiceWorker();
+
+window.addEventListener("load", function() {
+  //openDatabase();
+  registerServiceWorker();
+  let homeLinks = document.querySelectorAll(".jsHomeLink");
+  for (const link of homeLinks) {
+    link.href = `${appAlias}`;
+  }
+});
