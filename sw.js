@@ -6,7 +6,7 @@ if (
   appAlias = "";
 }
 
-const staticCacheName = "rreviews-data-v1";
+const staticCacheName = "rreviews-data-v2";
 const contentImgsCache = "rreviews-imgs";
 const allCaches = [staticCacheName, contentImgsCache];
 self.addEventListener("install", function(event) {
@@ -17,6 +17,7 @@ self.addEventListener("install", function(event) {
         return cache.addAll([
           "manifest.json",
           "index.html",
+          "./"
           "restaurant.html",
           "sw.js",
           "js/app.js",
