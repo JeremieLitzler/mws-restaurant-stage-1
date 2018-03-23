@@ -1,9 +1,6 @@
-let appAlias = "/mws-restaurant-stage-1";
-if (
-  location.hostname === "mws-restaurant-stage-1-webdevjlprojects.c9users.io" ||
-  location.hostname === "mws-nd-s1.puzzlout.com"
-) {
-  appAlias = "";
+let appAlias = "";
+if (location.hostname === "localhost") {
+  appAlias = "/mws-restaurant-stage-1";
 }
 
 const staticCacheName = "rreviews-data-v2";
@@ -14,28 +11,25 @@ self.addEventListener("install", function(event) {
     caches
       .open(staticCacheName)
       .then(function(cache) {
-        return cache.addAll([
-          "manifest.json",
-          "index.html",
-          "./"
-          "restaurant.html",
-          "sw.js",
-          "js/app.js",
-          "js/dbhelper.js",
-          "js/main.js",
-          "js/restaurant_info.js",
-          "js/focus.handler.js",
-          "js/select.change.handler.js",
-          "css/styles.css",
-          "favicon.ico",
-          "https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2",
-          "https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2",
-          "data/restaurants.json"
-        ]);
+        return cache
+          .addAll([
+            "/",
+            "js/app.js",
+            "js/dbhelper.js",
+            "js/main.js",
+            "js/restaurant_info.js",
+            "js/focus.handler.js",
+            "js/select.change.handler.js",
+            "css/styles.css",
+            "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css",
+            "favicon.ico",
+            "https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2",
+            "https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2",
+            "data/restaurants.json"
+          ])
+          .catch(error => console.log("caches addAll : ", error));
       })
-      .catch(function(err) {
-        console.log("Cache.AddAll -> resource to cache failed", err);
-      })
+      .catch(error => console.log("caches open: ", error))
   );
 });
 self.addEventListener("activate", function(event) {
@@ -50,7 +44,8 @@ self.addEventListener("activate", function(event) {
             );
           })
           .map(function(cacheName) {
-            return caches.delete(cacheName);
+            console.log("About to delete the cache...");
+            //return caches.delete(cacheName);
           })
       );
     })
@@ -58,19 +53,8 @@ self.addEventListener("activate", function(event) {
 });
 self.addEventListener("fetch", function(event) {
   const requestUrl = new URL(event.request.url);
-  if (requestUrl.origin !== location.origin) {
-    event.respondWith(
-      caches
-        .match(event.request)
-        .then(function(response) {
-          return response || fetch(event.request);
-        })
-        .catch(function(err) {
-          console.log("Failed fetch", event.request);
-        })
-    );
-  }
 
+  //Skip Google Maps resources fetch
   if (
     event.request.url.startsWith("https://maps.gstatic.com") ||
     event.request.url.startsWith("https://maps.googleapis.com")
@@ -88,11 +72,7 @@ self.addEventListener("fetch", function(event) {
 });
 
 function serveFile(request) {
-  const storageUrl = request.url; //.replace(`${appAlias}/`, "");
-  if (storageUrl === "/" || storageUrl === `${appAlias}/`) {
-    console.log("Url is the index page!");
-    storageUrl = `${appAlias}/index.html`;
-  }
+  const storageUrl = request.url;
   caches.open(staticCacheName).then(function(cache) {
     cache.match(storageUrl).then(function(response) {
       if (response) {
@@ -101,11 +81,15 @@ function serveFile(request) {
       }
       console.log("Response for request not cached", request.url);
       console.log("Caching response after network fetch...");
-      return fetch(request).then(function(networkResponse) {
-        cache.put(storageUrl, networkResponse.clone());
-        console.log("Resource cached from network!", storageUrl);
-        return networkResponse;
-      });
+      return fetch(request)
+        .then(function(networkResponse) {
+          cache.put(storageUrl, networkResponse.clone());
+          console.log("Resource cached from network!", storageUrl);
+          return networkResponse;
+        })
+        .catch(function(err) {
+          console.log("Error fetching resource not cached", err);
+        });
     });
   });
 }
