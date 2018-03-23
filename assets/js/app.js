@@ -48,6 +48,6 @@ window.addEventListener("load", function() {
   registerServiceWorker();
   let homeLinks = document.querySelectorAll(".jsHomeLink");
   for (const link of homeLinks) {
-    link.href = `${appAlias}`;
+    link.href = `./${appAlias}`;
   }
 });
