@@ -5,104 +5,95 @@ if (location.hostname === "localhost") {
 const CACHE_VERSION = 9;
 const staticCacheName = `rreviews-data-v${CACHE_VERSION}`;
 const contentImgsCache = `rreviews-imgs-v${CACHE_VERSION}`;
-const allCaches = [staticCacheName, contentImgsCache];
-self.addEventListener("install", function(event) {
+/*
+ Copyright 2016 Google Inc. All Rights Reserved.
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+     http://www.apache.org/licenses/LICENSE-2.0
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/
+
+// Names of the two caches used in this version of the service worker.
+// Change to v2, etc. when you update any of the local resources, which will
+// in turn trigger the install event again.
+const PRECACHE = "precache-v1";
+const RUNTIME = "runtime";
+
+// A list of local resources we always want to be cached.
+const PRECACHE_URLS = [
+  "/",
+  "index.html",
+  "js/app.js",
+  "js/dbhelper.js",
+  "js/main.js",
+  "js/restaurant_info.js",
+  "js/focus.handler.js",
+  "js/select.change.handler.js",
+  "css/styles.css",
+  "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css",
+  "favicon.ico",
+  "https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2",
+  "https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2"
+];
+
+// The install handler takes care of precaching the resources we always need.
+self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(staticCacheName).then(function(cache) {
-      console.log(`${staticCacheName} is opened`);
-      return cache.addAll([
-        "/",
-        "index.html",
-        "js/app.js",
-        "js/dbhelper.js",
-        "js/main.js",
-        "js/restaurant_info.js",
-        "js/focus.handler.js",
-        "js/select.change.handler.js",
-        "css/styles.css",
-        "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css",
-        "favicon.ico",
-        "https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2",
-        "https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2"
-      ]) /*
-        .catch(function(error) {
-          alert(`cache addAll error: ${error}`);0
-          console.log("cache addAll : ", error);
-        })*/;
-    })
+    caches
+      .open(PRECACHE)
+      .then(cache => cache.addAll(PRECACHE_URLS))
+      .then(self.skipWaiting())
   );
 });
 
-self.addEventListener("activate", function(event) {
+// The activate handler takes care of cleaning up old caches.
+self.addEventListener("activate", event => {
+  const currentCaches = [PRECACHE, RUNTIME];
   event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames
-          .filter(function(cacheName) {
-            return (
-              cacheName.startsWith("rreviews-") &&
-              !allCaches.includes(cacheName)
-            );
+    caches
+      .keys()
+      .then(cacheNames => {
+        return cacheNames.filter(
+          cacheName => !currentCaches.includes(cacheName)
+        );
+      })
+      .then(cachesToDelete => {
+        return Promise.all(
+          cachesToDelete.map(cacheToDelete => {
+            return caches.delete(cacheToDelete);
           })
-          .map(function(cacheName) {
-            console.log(`About to delete the cache ${cacheName}`);
-            //return caches.delete(cacheName);
-          })
-      );
-    })
+        );
+      })
+      .then(() => self.clients.claim())
   );
 });
-self.addEventListener("fetch", function(event) {
-  const requestUrl = new URL(event.request.url);
 
-  //Skip Google Maps resources fetch
-  if (
-    event.request.url.startsWith("https://maps.gstatic.com") ||
-    event.request.url.startsWith("https://maps.googleapis.com")
-  ) {
-    //console.log("Skipping Google Maps resource...");
-    return;
-  }
+// The fetch handler serves responses for same-origin resources from a cache.
+// If no response is found, it populates the runtime cache with the response
+// from the network before returning it to the page.
+self.addEventListener("fetch", event => {
+  // Skip cross-origin requests, like those for Google Analytics.
+  if (event.request.url.startsWith(self.location.origin)) {
+    event.respondWith(
+      caches.match(event.request).then(cachedResponse => {
+        if (cachedResponse) {
+          return cachedResponse;
+        }
 
-  if (requestUrl.pathname.startsWith(`${appAlias}/build/img`)) {
-    event.respondWith(serveImage(event.request));
-    return;
-  }
-
-  serveFile(event.request);
-});
-
-function serveFile(request) {
-  const storageUrl = request.url;
-  caches.open(staticCacheName).then(function(cache) {
-    cache.match(storageUrl).then(function(response) {
-      if (response) {
-        console.log("Response found for:", storageUrl);
-        return response;
-      }
-      console.log("Response for request not cached", request.url);
-      console.log("Caching response after network fetch...");
-      return fetch(request)
-        .then(function(networkResponse) {
-          cache.put(storageUrl, networkResponse.clone());
-          console.log("Resource cached from network!", storageUrl);
-          return networkResponse;
-        })
-        .catch(function(err) {
-          console.log("Error fetching resource not cached", err);
+        return caches.open(RUNTIME).then(cache => {
+          return fetch(event.request).then(response => {
+            // Put a copy of the response in the runtime cache.
+            return cache.put(event.request, response.clone()).then(() => {
+              return response;
+            });
+          });
         });
-    });
-  });
-}
-function serveImage(request) {
-  var storageUrl = request.url.replace(/-\d+w\.jpg$/, "");
-  return caches.open(contentImgsCache).then(function(cache) {
-    return cache.match(storageUrl).then(function(response) {
-      if (response) return response;
-      return fetch(request).then(function(networkResponse) {
-        cache.put(storageUrl, networkResponse.clone());
-        return networkResponse;
-      });
-    });
-  });
-}
+      })
+    );
+  }
+});
