@@ -2,36 +2,37 @@ let appAlias = "";
 if (location.hostname === "localhost") {
   appAlias = "/mws-restaurant-stage-1";
 }
-
-const staticCacheName = "rreviews-data-v2";
-const contentImgsCache = "rreviews-imgs";
+const CACHE_VERSION = 9;
+const staticCacheName = `rreviews-data-v${CACHE_VERSION}`;
+const contentImgsCache = `rreviews-imgs-v${CACHE_VERSION}`;
 const allCaches = [staticCacheName, contentImgsCache];
 self.addEventListener("install", function(event) {
   event.waitUntil(
-    caches
-      .open(staticCacheName)
-      .then(function(cache) {
-        return cache
-          .addAll([
-            "/",
-            "js/app.js",
-            "js/dbhelper.js",
-            "js/main.js",
-            "js/restaurant_info.js",
-            "js/focus.handler.js",
-            "js/select.change.handler.js",
-            "css/styles.css",
-            "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css",
-            "favicon.ico",
-            "https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2",
-            "https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2",
-            "data/restaurants.json"
-          ])
-          .catch(error => console.log("caches addAll : ", error));
-      })
-      .catch(error => console.log("caches open: ", error))
+    caches.open(staticCacheName).then(function(cache) {
+      console.log(`${staticCacheName} is opened`);
+      return cache.addAll([
+        "/",
+        "index.html",
+        "js/app.js",
+        "js/dbhelper.js",
+        "js/main.js",
+        "js/restaurant_info.js",
+        "js/focus.handler.js",
+        "js/select.change.handler.js",
+        "css/styles.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css",
+        "favicon.ico",
+        "https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2",
+        "https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2"
+      ]) /*
+        .catch(function(error) {
+          alert(`cache addAll error: ${error}`);0
+          console.log("cache addAll : ", error);
+        })*/;
+    })
   );
 });
+
 self.addEventListener("activate", function(event) {
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
@@ -44,7 +45,7 @@ self.addEventListener("activate", function(event) {
             );
           })
           .map(function(cacheName) {
-            console.log("About to delete the cache...");
+            console.log(`About to delete the cache ${cacheName}`);
             //return caches.delete(cacheName);
           })
       );
@@ -68,7 +69,7 @@ self.addEventListener("fetch", function(event) {
     return;
   }
 
-  return serveFile(event.request);
+  serveFile(event.request);
 });
 
 function serveFile(request) {
