@@ -47,7 +47,6 @@ self.addEventListener("install", event => {
     caches
       .open(PRECACHE)
       .then(cache => cache.addAll(PRECACHE_URLS))
-      .then(self.skipWaiting())
   );
 });
 
