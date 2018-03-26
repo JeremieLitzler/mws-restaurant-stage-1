@@ -14,31 +14,28 @@
 // Names of the two caches used in this version of the service worker.
 // Change to CACHE_VERSION, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
-const CACHE_VERSION = 10;
+const CACHE_VERSION = 14;
 const PRECACHE = `rreviews-data-v${CACHE_VERSION}`;
 const PRECACHE_IMG = `rreviews-imgs-v${CACHE_VERSION}`;
 const RUNTIME = `rreviews-runtime`;
 
 // A list of local resources we always want to be cached.
-const PRECACHE_URLS = {
-  alias_index: "/",
-  page_index: "index.html",
-  page_restaurant: "restaurant.html",
-  js_app: "assets/js/app.js",
-  js_dbhelper: "assets/js/dbhelper.js",
-  js_main: "assets/js/main.js",
-  js_restaurant: "assets/js/restaurant_info.js",
-  js_focus: "assets/js/focus.handler.js",
-  js_select: "assets/js/select.change.handler.js",
-  css_styles: "assets/css/styles.css",
-  css_normalize:
-    "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css",
-  favicon: "favicon.ico",
-  font_roboto_1:
-    "https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2",
-  font_roboto_2:
-    "https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2"
-};
+const PRECACHE_URLS = [
+  "./",
+  "index.html",
+  "restaurant.html",
+  "assets/js/app.js",
+  "assets/js/dbhelper.js",
+  "assets/js/main.js",
+  "assets/js/restaurant_info.js",
+  "assets/js/focus.handler.js",
+  "assets/js/select.change.handler.js",
+  "assets/css/styles.css",
+  "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css",
+  "favicon.ico",
+  "https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2",
+  "https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2"
+];
 
 // The install handler takes care of precaching the resources we always need.
 self.addEventListener("install", event => {
@@ -46,12 +43,10 @@ self.addEventListener("install", event => {
     caches
       .open(PRECACHE)
       .then(cache => {
-        for (const currentUrl in PRECACHE_URLS) {
-          if (PRECACHE_URLS.hasOwnProperty(currentUrl)) {
-            cache.add(PRECACHE_URLS[currentUrl]).catch(error => {
-              console.log(`Cache.add failed for ${currentUrl}`, error);
-            });
-          }
+        for (const index of PRECACHE_URLS) {
+          cache.add(PRECACHE_URLS[index]).catch(error => {
+            console.log(`Cache.add failed for ${currentUrl}`, error);
+          });
         }
       })
       .catch(error => {
