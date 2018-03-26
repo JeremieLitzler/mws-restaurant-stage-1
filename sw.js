@@ -1,10 +1,3 @@
-let appAlias = "";
-if (location.hostname === "localhost") {
-  appAlias = "/mws-restaurant-stage-1";
-}
-const CACHE_VERSION = 9;
-const staticCacheName = `rreviews-data-v${CACHE_VERSION}`;
-const contentImgsCache = `rreviews-imgs-v${CACHE_VERSION}`;
 /*
  Copyright 2016 Google Inc. All Rights Reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,35 +12,86 @@ const contentImgsCache = `rreviews-imgs-v${CACHE_VERSION}`;
 */
 
 // Names of the two caches used in this version of the service worker.
-// Change to v2, etc. when you update any of the local resources, which will
+// Change to CACHE_VERSION, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
-const PRECACHE = "precache-v1";
-const RUNTIME = "runtime";
+const CACHE_VERSION = 9;
+const PRECACHE = `rreviews-data-v${CACHE_VERSION}`;
+const PRECACHE_IMG = `rreviews-imgs-v${CACHE_VERSION}`;
+const RUNTIME = `rreviews-runtime`;
 
 // A list of local resources we always want to be cached.
-const PRECACHE_URLS = [
-  "/",
-  "index.html",
-  "js/app.js",
-  "js/dbhelper.js",
-  "js/main.js",
-  "js/restaurant_info.js",
-  "js/focus.handler.js",
-  "js/select.change.handler.js",
-  "css/styles.css",
-  "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css",
-  "favicon.ico",
-  "https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2",
-  "https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2"
-];
+const PRECACHE_URLS = {
+  alias_index: "/",
+  page_index: "index.html",
+  page_restaurant: "restaurant.html",
+  js_app: "js/app.js",
+  js_dbhelper: "js/dbhelper.js",
+  js_main: "js/main.js",
+  js_restaurant: "js/restaurant_info.js",
+  js_focus: "js/focus.handler.js",
+  js_select: "js/select.change.handler.js",
+  css_styles: "css/styles.css",
+  css_normalize:
+    "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css",
+  favicon: "favicon.ico",
+  font_roboto_1:
+    "https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2",
+  font_roboto_2:
+    "https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2"
+};
 
 // The install handler takes care of precaching the resources we always need.
 self.addEventListener("install", event => {
   event.waitUntil(
     caches
       .open(PRECACHE)
-      .then(cache => cache.addAll(PRECACHE_URLS))
-      .catch(error => { console.log("caches", error) })
+      .then(cache => {
+        cache.add(PRECACHE_URLS.alias_index).catch(error => {
+          console.log("Cache.add failed", error);
+        });
+        cache.add(PRECACHE_URLS.page_index).catch(error => {
+          console.log("Cache.add failed", error);
+        });
+        cache.add(PRECACHE_URLS.page_restaurant).catch(error => {
+          console.log("Cache.add failed", error);
+        });
+        cache.add(PRECACHE_URLS.js_app).catch(error => {
+          console.log("Cache.add failed", error);
+        });
+        cache.add(PRECACHE_URLS.js_dbhelper).catch(error => {
+          console.log("Cache.add failed", error);
+        });
+        cache.add(PRECACHE_URLS.js_focus).catch(error => {
+          console.log("Cache.add failed", error);
+        });
+        cache.add(PRECACHE_URLS.js_main).catch(error => {
+          console.log("Cache.add failed", error);
+        });
+        cache.add(PRECACHE_URLS.js_restaurant).catch(error => {
+          console.log("Cache.add failed", error);
+        });
+        cache.add(PRECACHE_URLS.js_select).catch(error => {
+          console.log("Cache.add failed", error);
+        });
+        cache.add(PRECACHE_URLS.css_styles).catch(error => {
+          console.log("Cache.add failed", error);
+        });
+        cache.add(PRECACHE_URLS.css_normalize).catch(error => {
+          console.log("Cache.add failed", error);
+        });
+        cache.add(PRECACHE_URLS.favicon).catch(error => {
+          console.log("Cache.add failed", error);
+        });
+        cache.add(PRECACHE_URLS.font_roboto_1).catch(error => {
+          console.log("Cache.add failed", error);
+        });
+        cache.add(PRECACHE_URLS.font_roboto_2).catch(error => {
+          console.log("Cache.add failed", error);
+        });
+      })
+      .catch(error => {
+        console.log("caches", error);
+      })
   );
 });
 
@@ -77,7 +121,7 @@ self.addEventListener("activate", event => {
 // If no response is found, it populates the runtime cache with the response
 // from the network before returning it to the page.
 self.addEventListener("fetch", event => {
-  // Skip cross-origin requests, like those for Google Analytics.
+  // Skip cross-origin requests, like those for Google Analytics or Maps.
   if (event.request.url.startsWith(self.location.origin)) {
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {
@@ -85,6 +129,9 @@ self.addEventListener("fetch", event => {
           return cachedResponse;
         }
 
+        if (event.request.url.endsWith("jpg")) {
+          console.log("Skipping images for now...");
+        }
         return caches.open(RUNTIME).then(cache => {
           return fetch(event.request).then(response => {
             // Put a copy of the response in the runtime cache.
