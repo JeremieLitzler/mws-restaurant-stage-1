@@ -14,7 +14,7 @@
 // Names of the two caches used in this version of the service worker.
 // Change to CACHE_VERSION, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
-const CACHE_VERSION = 1;
+const CACHE_VERSION = 4;
 const PRECACHE = `rreviews-data-v${CACHE_VERSION}`;
 const PRECACHE_IMG = `rreviews-imgs-v${CACHE_VERSION}`;
 const RUNTIME = `rreviews-runtime`;
@@ -31,10 +31,8 @@ const PRECACHE_URLS = [
   "assets/js/focus.handler.js",
   "assets/js/select.change.handler.js",
   "assets/css/styles.css",
-  "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css",
-  "favicon.ico",
-  "https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2",
-  "https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2"
+  "assets/css/reset.css",
+  "favicon.ico"
 ];
 
 // The install handler takes care of precaching the resources we always need.
@@ -61,6 +59,7 @@ self.addEventListener("install", event => {
 // The activate handler takes care of cleaning up old caches.
 self.addEventListener("activate", event => {
   const currentCaches = [PRECACHE, RUNTIME];
+  console.log(`Activating service worker with CACHE ${PRECACHE}`);
   event.waitUntil(
     caches
       .keys()
