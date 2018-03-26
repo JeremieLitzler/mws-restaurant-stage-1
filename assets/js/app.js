@@ -23,9 +23,16 @@ function openDatabase() {
     store.createIndex("by-date", "time");
   });
 }
-function registerServiceWorker() {
+function isBrowserCompatiblewithServiceWorkers() {
   if (!navigator.serviceWorker) {
     console.log("ServiceWorker is not compatible with this browser...");
+    return false;
+  }
+
+  return true;
+}
+function registerServiceWorker() {
+  if (!isBrowserCompatiblewithServiceWorkers()) {
     return;
   }
   console.log("ServiceWorker is compatible with this browser!");
@@ -43,9 +50,25 @@ function registerServiceWorker() {
   );
 }
 
+function checkServiceWorkerController() {
+  if (!isBrowserCompatiblewithServiceWorkers()) {
+    return;
+  }
+  if (navigator.serviceWorker.controller) {
+    console.log(
+      "This page is currently controlled by:",
+      navigator.serviceWorker.controller
+    );
+  } else {
+    console.log(
+      "This page is not currently controlled " + "by a service worker."
+    );
+  }
+}
 window.addEventListener("load", function() {
   //openDatabase();
   registerServiceWorker();
+  checkServiceWorkerController();
   let homeLinks = document.querySelectorAll(".jsHomeLink");
   for (const link of homeLinks) {
     link.href = `${appAlias}`;
