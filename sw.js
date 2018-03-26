@@ -14,7 +14,7 @@
 // Names of the two caches used in this version of the service worker.
 // Change to CACHE_VERSION, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
-const CACHE_VERSION = 14;
+const CACHE_VERSION = 1;
 const PRECACHE = `rreviews-data-v${CACHE_VERSION}`;
 const PRECACHE_IMG = `rreviews-imgs-v${CACHE_VERSION}`;
 const RUNTIME = `rreviews-runtime`;
@@ -39,13 +39,16 @@ const PRECACHE_URLS = [
 
 // The install handler takes care of precaching the resources we always need.
 self.addEventListener("install", event => {
+  console.log("Installing service worker...");
   event.waitUntil(
     caches
       .open(PRECACHE)
       .then(cache => {
-        for (const index of PRECACHE_URLS) {
-          cache.add(PRECACHE_URLS[index]).catch(error => {
-            console.log(`Cache.add failed for ${currentUrl}`, error);
+        console.log(`Cache ${PRECACHE} opened!`);
+        for (const url of PRECACHE_URLS) {
+          console.log(`About to cache ${url} at index ${url}`);
+          cache.add(url).catch(err => {
+            console.log(`Cache.add failed for ${url}`, err);
           });
         }
       })
