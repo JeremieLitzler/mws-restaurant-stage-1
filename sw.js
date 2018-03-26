@@ -14,7 +14,7 @@
 // Names of the two caches used in this version of the service worker.
 // Change to CACHE_VERSION, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
-const CACHE_VERSION = 9;
+const CACHE_VERSION = 10;
 const PRECACHE = `rreviews-data-v${CACHE_VERSION}`;
 const PRECACHE_IMG = `rreviews-imgs-v${CACHE_VERSION}`;
 const RUNTIME = `rreviews-runtime`;
@@ -46,48 +46,13 @@ self.addEventListener("install", event => {
     caches
       .open(PRECACHE)
       .then(cache => {
-        cache.add(PRECACHE_URLS.alias_index).catch(error => {
-          console.log("Cache.add failed", error);
-        });
-        cache.add(PRECACHE_URLS.page_index).catch(error => {
-          console.log("Cache.add failed", error);
-        });
-        cache.add(PRECACHE_URLS.page_restaurant).catch(error => {
-          console.log("Cache.add failed", error);
-        });
-        cache.add(PRECACHE_URLS.js_app).catch(error => {
-          console.log("Cache.add failed", error);
-        });
-        cache.add(PRECACHE_URLS.js_dbhelper).catch(error => {
-          console.log("Cache.add failed", error);
-        });
-        cache.add(PRECACHE_URLS.js_focus).catch(error => {
-          console.log("Cache.add failed", error);
-        });
-        cache.add(PRECACHE_URLS.js_main).catch(error => {
-          console.log("Cache.add failed", error);
-        });
-        cache.add(PRECACHE_URLS.js_restaurant).catch(error => {
-          console.log("Cache.add failed", error);
-        });
-        cache.add(PRECACHE_URLS.js_select).catch(error => {
-          console.log("Cache.add failed", error);
-        });
-        cache.add(PRECACHE_URLS.css_styles).catch(error => {
-          console.log("Cache.add failed", error);
-        });
-        cache.add(PRECACHE_URLS.css_normalize).catch(error => {
-          console.log("Cache.add failed", error);
-        });
-        cache.add(PRECACHE_URLS.favicon).catch(error => {
-          console.log("Cache.add failed", error);
-        });
-        cache.add(PRECACHE_URLS.font_roboto_1).catch(error => {
-          console.log("Cache.add failed", error);
-        });
-        cache.add(PRECACHE_URLS.font_roboto_2).catch(error => {
-          console.log("Cache.add failed", error);
-        });
+        for (const currentUrl in PRECACHE_URLS) {
+          if (PRECACHE_URLS.hasOwnProperty(currentUrl)) {
+            cache.add(PRECACHE_URLS[currentUrl]).catch(error => {
+              console.log(`Cache.add failed for ${currentUrl}`, error);
+            });
+          }
+        }
       })
       .catch(error => {
         console.log("caches", error);
