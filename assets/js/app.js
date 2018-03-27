@@ -67,4 +67,17 @@ window.addEventListener("load", function() {
   for (const link of homeLinks) {
     link.href = `./`;
   }
+  this.fetch("assets/offline.html").catch(response => {
+    if (response.name === "TypeError") {
+      //Show the placeholder and hide the map element
+      let mapOfflineMsgBlock = document.querySelector(
+        ".map-offline-placeholder"
+      );
+      let mapBlock = document.querySelector("#map");
+      if (mapOfflineMsgBlock != null && mapBlock != null) {
+        mapBlock.style.display = "none";
+        mapOfflineMsgBlock.style.display = "block";
+      }
+    }
+  });
 });

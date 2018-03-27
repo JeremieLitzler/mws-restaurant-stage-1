@@ -14,7 +14,7 @@
 // Names of the two caches used in this version of the service worker.
 // Change to CACHE_VERSION, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
-const CACHE_VERSION = 4;
+const CACHE_VERSION = 2;
 const PRECACHE = `rreviews-data-v${CACHE_VERSION}`;
 const PRECACHE_IMG = `rreviews-imgs-v${CACHE_VERSION}`;
 const RUNTIME = `rreviews-runtime-v${CACHE_VERSION}`;
@@ -84,8 +84,13 @@ self.addEventListener("activate", event => {
 // If no response is found, it populates the runtime cache with the response
 // from the network before returning it to the page.
 self.addEventListener("fetch", event => {
-  // Skip cross-origin requests, like those for Google Analytics or Maps.
+  // Skip cross-origin requests, like those for Google Analytics or Maps
   const requestUrl = event.request.url;
+  if (requestUrl.endsWith("offline.html")) {
+    //Do not catchoffline.html.
+    //It is used to detect if the user isn't connected to any netword
+    return;
+  }
   if (requestUrl.startsWith(self.location.origin)) {
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {

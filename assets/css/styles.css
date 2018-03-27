@@ -160,7 +160,16 @@ footer {
   border: 1px solid red;
 }
 /* ====================== Components ====================== */
-
+.c-emphasis {
+  text-align: center;
+}
+h2.c-emphasis {
+  font-size: calc(var(--fs-default) * 2);
+  font-weight: bold;
+}
+p.c-emphasis {
+  font-style: italic;
+}
 .c-btn {
   background-color: var(--brand-color);
   color: var(--text-brand-color);
@@ -298,8 +307,19 @@ nav h1 a {
 #map {
   height: 40vh;
   width: 100%;
-  background-color: var(--c-bg-light);
+  background-color: transparent;
+  float: left;
 }
+.map-offline-placeholder {
+  display: none;
+  z-index: 0;
+  margin: 5rem;
+}
+.map-offline-placeholder > * {
+  text-align: center;
+  /* top: 30vmin; */
+}
+
 /* ====================== Restaurant Filtering ====================== */
 
 .filter-options {
