@@ -17,7 +17,7 @@
 const CACHE_VERSION = 5;
 const PRECACHE = `rreviews-data-v${CACHE_VERSION}`;
 const PRECACHE_IMG = `rreviews-imgs-v${CACHE_VERSION}`;
-const RUNTIME = `rreviews-runtime`;
+const RUNTIME = `rreviews-runtime-v${CACHE_VERSION}``;
 
 // A list of local resources we always want to be cached.
 const PRECACHE_URLS = [
