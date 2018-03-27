@@ -14,10 +14,11 @@
 // Names of the two caches used in this version of the service worker.
 // Change to CACHE_VERSION, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
-const CACHE_VERSION = 6;
+const CACHE_VERSION = 4;
 const PRECACHE = `rreviews-data-v${CACHE_VERSION}`;
 const PRECACHE_IMG = `rreviews-imgs-v${CACHE_VERSION}`;
 const RUNTIME = `rreviews-runtime-v${CACHE_VERSION}`;
+const RUNTIME_IMG = `rreviews-runtime-img-v${CACHE_VERSION}`;
 
 // A list of local resources we always want to be cached.
 const PRECACHE_URLS = [
@@ -84,24 +85,39 @@ self.addEventListener("activate", event => {
 // from the network before returning it to the page.
 self.addEventListener("fetch", event => {
   // Skip cross-origin requests, like those for Google Analytics or Maps.
-  if (event.request.url.startsWith(self.location.origin)) {
+  const requestUrl = event.request.url;
+  if (requestUrl.startsWith(self.location.origin)) {
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {
         if (cachedResponse) {
           return cachedResponse;
         }
-
-        if (event.request.url.endsWith("jpg")) {
-          console.log("Skipping images for now...");
+        let targetCache = RUNTIME;
+        if (requestUrl.endsWith("jpg")) {
+          targetCache = RUNTIME_IMG;
         }
-        return caches.open(RUNTIME).then(cache => {
-          return fetch(event.request).then(response => {
-            // Put a copy of the response in the runtime cache.
-            return cache.put(event.request, response.clone()).then(() => {
-              return response;
-            });
+        return caches
+          .open(targetCache)
+          .then(cache => {
+            return fetch(event.request)
+              .then(response => {
+                // Put a copy of the response in the runtime cache.
+                return cache
+                  .put(event.request, response.clone())
+                  .then(() => {
+                    return response;
+                  })
+                  .catch(err => {
+                    console.log(`cache.put failed on ${requestUrl}`, err);
+                  });
+              })
+              .catch(err => {
+                console.log(`fetch failed on ${requestUrl}`, err);
+              });
+          })
+          .catch(err => {
+            console.log(`cache.match failed ${requestUrl}`, err);
           });
-        });
       })
     );
   }
