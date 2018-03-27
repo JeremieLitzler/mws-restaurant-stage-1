@@ -50,16 +50,16 @@ fetchRestaurantFromURL = callback => {
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById("restaurant-name");
-  name.innerHTML = restaurant.name;
+  name.innerHTML = `At ${restaurant.name}`;
+  const cuisine = document.getElementById("restaurant-cuisine");
+  cuisine.innerHTML = `is served <i>${restaurant.cuisine_type}</i> cuisine`;
   const address = document.getElementById("restaurant-address");
-  address.innerHTML = `<i>Restaurant address:</i><p>${restaurant.address}</p>`;
+  address.innerHTML = `and is located at:<p><i>${restaurant.address}</i></p>`;
   const image = document.getElementById("restaurant-img");
   image.className = "restaurant-img";
   image.alt = `${restaurant.name} restaurant, ${restaurant.shortDesc}`;
   image.src = DBHelper.imageUrlForRestaurant(restaurant, 128);
   image.srcset = buildSrcSet(restaurant);
-  const cuisine = document.getElementById("restaurant-cuisine");
-  cuisine.innerHTML = `<i>Cuisine type:</i> ${restaurant.cuisine_type}`;
   // fill operating hours
   if (restaurant.operating_hours) {
     fillRestaurantHoursHTML();
@@ -135,7 +135,12 @@ createReviewHTML = review => {
 fillBreadcrumb = (restaurant = self.restaurant) => {
   const breadcrumb = document.getElementById("breadcrumb");
   const li = document.createElement("li");
-  li.innerHTML = restaurant.name;
+  const currentPage = document.createElement("a");
+  currentPage.href = "#";
+  currentPage.title = `${restaurant.name} restaurant details`;
+  currentPage.setAttribute("aria-current", "page");
+  currentPage.innerHTML = restaurant.name;
+  li.appendChild(currentPage);
   breadcrumb.appendChild(addHomeLink());
   breadcrumb.appendChild(li);
 };
