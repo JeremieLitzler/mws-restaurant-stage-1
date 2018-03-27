@@ -149,7 +149,7 @@ fillBreadcrumb = (restaurant = self.restaurant) => {
  */
 function addHomeLink() {
   const homeLi = document.createElement("li");
-  homeLi.innerHTML = `<li><a class="jsHomeLink" title="Navigate to the Home page" href="#">Home</a></li>`;
+  homeLi.innerHTML = `<li><a class="jsHomeLink" title="Navigate to the Home page" href="./">Home</a></li>`;
   return homeLi;
 }
 /**
