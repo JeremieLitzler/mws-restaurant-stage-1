@@ -55,7 +55,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   address.innerHTML = `<i>Restaurant address:</i><p>${restaurant.address}</p>`;
   const image = document.getElementById("restaurant-img");
   image.className = "restaurant-img";
-  image.alt = `Sneak peek inside the restaurant ${restaurant.name}`;
+  image.alt = `${restaurant.name} restaurant, ${restaurant.shortDesc}`;
   image.src = DBHelper.imageUrlForRestaurant(restaurant, 128);
   image.srcset = buildSrcSet(restaurant);
   const cuisine = document.getElementById("restaurant-cuisine");
@@ -90,7 +90,7 @@ fillRestaurantHoursHTML = (
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById("reviews-container");
-  const title = document.createElement("h2");
+  const title = document.createElement("h3");
   title.innerHTML = "Reviews";
   container.appendChild(title);
   if (!reviews) {
@@ -114,7 +114,7 @@ createReviewHTML = review => {
   date.className = "review-date";
   date.innerHTML = `Published: ${review.date}`;
   li.appendChild(date);
-  const name = document.createElement("h3");
+  const name = document.createElement("h4");
   name.className = "review-author";
   name.tabIndex = "0"; //To help go through the review list using the keyboard.
   name.innerHTML = `Review of ${review.name}`;
@@ -144,7 +144,7 @@ fillBreadcrumb = (restaurant = self.restaurant) => {
  */
 function addHomeLink() {
   const homeLi = document.createElement("li");
-  homeLi.innerHTML = `<li><a class="jsHomeLink" title="Navigate to the Home page" href="./">Home</a></li>`;
+  homeLi.innerHTML = `<li><a class="jsHomeLink" title="Navigate to the Home page" href="#">Home</a></li>`;
   return homeLi;
 }
 /**

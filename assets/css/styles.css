@@ -552,11 +552,11 @@ select option:checked {
   line-height: initial;
   overflow-y: scroll;
 }
-.reviews-container-modal h3 {
+.reviews-container-modal h4 {
   font-size: var(--fs-default);
   border-radius: var(--default-bd-radius);
 }
-.reviews-container-modal h3:focus {
+.reviews-container-modal h4:focus {
   box-shadow: var(--shadow-dark);
 }
 @media screen and (min-width: 650px) {
