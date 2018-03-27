@@ -7,11 +7,11 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-    const port = isSsl ? 443 : 80; // Change this to your server port
-    const jsonUrl = isSsl
-      ? `${origin}:443${appAlias}/data/restaurants.json`
-      : `${origin}${appAlias}/data/restaurants.json`;
-    //console.log(jsonUrl);
+    const sslActive = location.protocol.indexOf("https") !== -1;
+    const jsonUrl = sslActive
+      ? `${location.origin}:443/${appAlias}/data/restaurants.json`
+      : `${location.origin}/${appAlias}/data/restaurants.json`;
+    console.log(jsonUrl);
     return jsonUrl;
   }
 
@@ -196,10 +196,11 @@ class DBHelper {
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant, imgWidth = null) {
+    const imgFolderPath = `build/img/`;
     if (imgWidth !== null) {
-      return `${appAlias}/build/img/${restaurant.id}-${imgWidth}w.jpg`;
+      return `${imgFolderPath}${restaurant.id}-${imgWidth}w.jpg`;
     }
-    return `${appAlias}/build/img/${restaurant.id}-better-original.jpg`;
+    return `${imgFolderPath}${restaurant.id}-better-original.jpg`;
   }
   /**
    * Map marker for a restaurant.

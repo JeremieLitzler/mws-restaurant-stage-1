@@ -1,8 +1,5 @@
 const gulp = require("gulp"),
-  $ = require("gulp-load-plugins")(),
-  cleanCSS = require("gulp-clean-css"),
-  rev = require("gulp-rev");
-
+  $ = require("gulp-load-plugins")();
 gulp.task("default", () =>
   gulp
     .src("src/*.css")
