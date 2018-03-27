@@ -597,8 +597,7 @@ select option:checked {
   font-size: calc(var(--fs-default) * 1.2);
 }
 .reviews-container-modal li {
-  margin: calc(var(--default-y-mg) * 2) calc(var(--default-x-mg) * 2) 0
-    calc(var(--default-x-mg) * 3);
+  margin: calc(var(--default-y-mg) * 2) calc(var(--default-x-mg) * 2) 0      calc(var(--default-x-mg) * 2);
   background-color: var(--c-bg-row-default);
   border: 1px solid var(--c-bd-color-row-default);
   padding: calc(var(--default-pad) * 2);
