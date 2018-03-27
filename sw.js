@@ -14,7 +14,7 @@
 // Names of the two caches used in this version of the service worker.
 // Change to CACHE_VERSION, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
-const CACHE_VERSION = 1;
+const CACHE_VERSION = 2;
 const PRECACHE = `rreviews-data-v${CACHE_VERSION}`;
 const PRECACHE_IMG = `rreviews-imgs-v${CACHE_VERSION}`;
 const RUNTIME = `rreviews-runtime-v${CACHE_VERSION}`;
